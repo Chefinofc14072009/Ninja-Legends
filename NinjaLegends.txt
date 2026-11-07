@@ -2,47 +2,57 @@
 -- CARREGAMENTO DA WINDUI & SERVIÇOS
 -- ========================================================
 local WindUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/Footagesus/WindUI/main/dist/main.lua"))()
-​local Players = game:GetService("Players")
+
+local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 local Workspace = game:GetService("Workspace")
 local VirtualUser = game:GetService("VirtualUser")
-​local LocalPlayer = Players.LocalPlayer
-​-- Função Rigorosa: Só equipa se for uma Espada real de ownedSwords (Ignora Shurikens)
+
+local LocalPlayer = Players.LocalPlayer
+
+-- Função Rigorosa: Só equipa se for uma Espada real de ownedSwords (Ignora Shurikens)
 local function equipOwnedSwordOnly(character)
-if not character then return end
-local humanoid = character:FindFirstChildOfClass("Humanoid")
-local equippedTool = character:FindFirstChildOfClass("Tool")
-​pcall(function()
-local ownedSwords = LocalPlayer:FindFirstChild("ownedSwords")
-if not ownedSwords then return end
-​if equippedTool and ownedSwords:FindFirstChild(equippedTool.Name) then
-return
+   if not character then return end
+   local humanoid = character:FindFirstChildOfClass("Humanoid")
+   local equippedTool = character:FindFirstChildOfClass("Tool")
+   
+   pcall(function()
+      local ownedSwords = LocalPlayer:FindFirstChild("ownedSwords")
+      if not ownedSwords then return end
+      
+      if equippedTool and ownedSwords:FindFirstChild(equippedTool.Name) then
+         return
+      end
+      
+      local backpack = LocalPlayer:FindFirstChildOfClass("Backpack")
+      if not backpack then return end
+      
+      for _, swordFolder in ipairs(ownedSwords:GetChildren()) do
+         local swordName = swordFolder.Name
+         local toolInBackpack = backpack:FindFirstChild(swordName)
+         
+         if toolInBackpack and humanoid then
+            humanoid:EquipTool(toolInBackpack)
+            return
+         end
+      end
+   end)
 end
-​local backpack = LocalPlayer:FindFirstChildOfClass("Backpack")
-if not backpack then return end
-​for _, swordFolder in ipairs(ownedSwords:GetChildren()) do
-local swordName = swordFolder.Name
-local toolInBackpack = backpack:FindFirstChild(swordName)
-​if toolInBackpack and humanoid then
-humanoid:EquipTool(toolInBackpack)
-return
-end
-end
-end)
-end
-​-- Cria a Janela Principal com WindUI (Tema Vermelho)
+
+-- Cria a Janela Principal com WindUI (Tema Vermelho)
 local Window = WindUI:CreateWindow({
-Title = "Ninja Legends | by Chefin",
-Icon = "sword",
-Author = "Chefin",
-Folder = "ChefinNinjaLegends",
-Size = UDim2.fromOffset(580, 460),
-Theme = "Red",
-Transparent = true,
-Acrylic = true,
+   Title = "Ninja Legends | by Chefin",
+   Icon = "sword",
+   Author = "Chefin",
+   Folder = "ChefinNinjaLegends",
+   Size = UDim2.fromOffset(580, 460),
+   Theme = "Red",
+   Transparent = true,
+   Acrylic = true,
 })
-​-- Variáveis de Controle Globais
+
+-- Variáveis de Controle Globais
 local farmNinjitsuEnabled = false
 local buySwordsEnabled = false
 local buyRanksEnabled = false
@@ -57,750 +67,847 @@ local multiJumpEnabled = false
 local autoOpenSelectedCrystalEnabled = false
 local autoEvolvePetsEnabled = false
 local autoMoneyEnabled = false
-​local selectedCrystalName = ""
+
+local selectedCrystalName = ""
 local selectedElementMastery = "Shadow Charge"
-​local ninjitsuConnection = nil
+
+local ninjitsuConnection = nil
 local hoopsConnection = nil
 local sellConnection = nil
 local mountainConnection = nil
-​-- ========================================================
+
+-- ========================================================
 -- CRIAÇÃO DAS ABAS (Main, Crystals, Kill, Client, OP)
 -- ========================================================
 local MainTab = Window:Tab({
-Title = "Main",
-Icon = "layout-dashboard"
+   Title = "Main",
+   Icon = "layout-dashboard"
 })
-​local CrystalsTab = Window:Tab({
-Title = "Crystals",
-Icon = "gem"
+
+local CrystalsTab = Window:Tab({
+   Title = "Crystals",
+   Icon = "gem"
 })
-​local KillTab = Window:Tab({
-Title = "Kill",
-Icon = "sword"
+
+local KillTab = Window:Tab({
+   Title = "Kill",
+   Icon = "sword"
 })
-​local ClientTab = Window:Tab({
-Title = "Client",
-Icon = "user"
+
+local ClientTab = Window:Tab({
+   Title = "Client",
+   Icon = "user"
 })
-​local OpTab = Window:Tab({
-Title = "OP",
-Icon = "flame"
+
+local OpTab = Window:Tab({
+   Title = "OP",
+   Icon = "flame"
 })
-​-- ========================================================
+
+-- ========================================================
 -- ABA MAIN: FARM NINJITSU
 -- ========================================================
 MainTab:Toggle({
-Title = "Farm Ninjitsu",
-Value = false,
-Callback = function(Value)
-farmNinjitsuEnabled = Value
-​if ninjitsuConnection then
-ninjitsuConnection:Disconnect()
-ninjitsuConnection = nil
-end
-​if farmNinjitsuEnabled then
-local ninjaEvent = LocalPlayer:WaitForChild("ninjaEvent")
-local args = { "swingKatana" }
-​ninjitsuConnection = RunService.RenderStepped:Connect(function()
-if farmNinjitsuEnabled then
-pcall(function()
-local character = LocalPlayer.Character
-if character then
-equipOwnedSwordOnly(character)
-end
-​ninjaEvent:FireServer(unpack(args))
-end)
-else
-if ninjitsuConnection then
-ninjitsuConnection:Disconnect()
-ninjitsuConnection = nil
-end
-end
-end)
-end
-end,
+   Title = "Farm Ninjitsu",
+   Value = false,
+   Callback = function(Value)
+      farmNinjitsuEnabled = Value
+      
+      if ninjitsuConnection then
+         ninjitsuConnection:Disconnect()
+         ninjitsuConnection = nil
+      end
+      
+      if farmNinjitsuEnabled then
+         local ninjaEvent = LocalPlayer:WaitForChild("ninjaEvent")
+         local args = { "swingKatana" }
+         
+         ninjitsuConnection = RunService.RenderStepped:Connect(function()
+            if farmNinjitsuEnabled then
+               pcall(function()
+                  local character = LocalPlayer.Character
+                  if character then
+                     equipOwnedSwordOnly(character)
+                  end
+                  
+                  ninjaEvent:FireServer(unpack(args))
+               end)
+            else
+               if ninjitsuConnection then
+                  ninjitsuConnection:Disconnect()
+                  ninjitsuConnection = nil
+               end
+            end
+         end)
+      end
+   end,
 })
-​MainTab:Toggle({
-Title = "Buy All Swords",
-Value = false,
-Callback = function(Value)
-buySwordsEnabled = Value
-​if buySwordsEnabled then
-task.spawn(function()
-local ninjaEvent = LocalPlayer:WaitForChild("ninjaEvent")
-​while buySwordsEnabled do
-pcall(function()
-local unlockFolder = Workspace:FindFirstChild("islandUnlockParts")
-if unlockFolder then
-for _, island in ipairs(unlockFolder:GetChildren()) do
-if not buySwordsEnabled then break end
-ninjaEvent:FireServer("buyAllSwords", island.Name)
-task.wait(0.05)
-end
-else
-ninjaEvent:FireServer("buyAllSwords", "Ground")
-end
-end)
-task.wait(0.2)
-end
-end)
-end
-end,
-})
-​MainTab:Toggle({
-Title = "Buy All Ranks",
-Value = false,
-Callback = function(Value)
-buyRanksEnabled = Value
-​if buyRanksEnabled then
-task.spawn(function()
-local ninjaEvent = LocalPlayer:WaitForChild("ninjaEvent")
-​while buyRanksEnabled do
-pcall(function()
-local ranksFolder = ReplicatedStorage:FindFirstChild("Ranks")
-local groundFolder = ranksFolder and (ranksFolder:FindFirstChild("Ground") or ranksFolder)
-​if groundFolder then
-for _, rank in ipairs(groundFolder:GetChildren()) do
-if not buyRanksEnabled then break end
-ninjaEvent:FireServer("buyRank", rank.Name)
-task.wait(0.02)
-end
-else
-if ranksFolder then
-for _, rank in ipairs(ranksFolder:GetDescendants()) do
-if not buyRanksEnabled then break end
-if rank:IsA("Configuration") or rank:IsA("ValueBase") or rank:IsA("Folder") then
-ninjaEvent:FireServer("buyRank", rank.Name)
-end
-end
-end
-end
-end)
-task.wait(0.15)
-end
-end)
-end
-end,
-})
-​MainTab:Toggle({
-Title = "Buy All Belts",
-Value = false,
-Callback = function(Value)
-buyBeltsEnabled = Value
-​if buyBeltsEnabled then
-task.spawn(function()
-local ninjaEvent = LocalPlayer:WaitForChild("ninjaEvent")
-​while buyBeltsEnabled do
-pcall(function()
-local unlockFolder = Workspace:FindFirstChild("islandUnlockParts")
-if unlockFolder then
-for _, island in ipairs(unlockFolder:GetChildren()) do
-if not buyBeltsEnabled then break end
-ninjaEvent:FireServer("buyAllBelts", island.Name)
-task.wait(0.05)
-end
-else
-ninjaEvent:FireServer("buyAllBelts", "Ground")
-end
-end)
-task.wait(0.2)
-end
-end)
-end
-end,
-})
-​local originalSellPos = nil
+
 MainTab:Toggle({
-Title = "Auto Sell",
-Value = false,
-Callback = function(Value)
-autoSellEnabled = Value
-​local character = LocalPlayer.Character
-local rootPart = character and character:FindFirstChild("HumanoidRootPart")
-​if autoSellEnabled then
-if rootPart then
-originalSellPos = rootPart.CFrame
-end
-​local toggleTimer = 0
-sellConnection = RunService.RenderStepped:Connect(function(dt)
-if autoSellEnabled then
-pcall(function()
-local char = LocalPlayer.Character
-local rp = char and char:FindFirstChild("HumanoidRootPart")
-​if rp then
-toggleTimer = toggleTimer + dt
-if toggleTimer < 0.6 then
-rp.CFrame = CFrame.new(77, 3, -53)
-elseif toggleTimer < 1.2 then
-rp.CFrame = CFrame.new(97, 3, -60)
-else
-toggleTimer = 0
-end
-end
-end)
-else
-if sellConnection then
-sellConnection:Disconnect()
-sellConnection = nil
-end
-end
-end)
-else
-if sellConnection then
-sellConnection:Disconnect()
-sellConnection = nil
-end
-​if originalSellPos and rootPart then
-rootPart.CFrame = originalSellPos
-end
-originalSellPos = nil
-end
-end,
+   Title = "Buy All Swords",
+   Value = false,
+   Callback = function(Value)
+      buySwordsEnabled = Value
+      
+      if buySwordsEnabled then
+         task.spawn(function()
+            local ninjaEvent = LocalPlayer:WaitForChild("ninjaEvent")
+            
+            while buySwordsEnabled do
+               pcall(function()
+                  local unlockFolder = Workspace:FindFirstChild("islandUnlockParts")
+                  if unlockFolder then
+                     for _, island in ipairs(unlockFolder:GetChildren()) do
+                        if not buySwordsEnabled then break end
+                        ninjaEvent:FireServer("buyAllSwords", island.Name)
+                        task.wait(0.05)
+                     end
+                  else
+                     ninjaEvent:FireServer("buyAllSwords", "Ground")
+                  end
+               end)
+               task.wait(0.2)
+            end
+         end)
+      end
+   end,
 })
-​local originalMountainPos = nil
+
 MainTab:Toggle({
-Title = "Mountain King Farm",
-Value = false,
-Callback = function(Value)
-mountainKingEnabled = Value
-​local character = LocalPlayer.Character
-local rootPart = character and character:FindFirstChild("HumanoidRootPart")
-​if mountainKingEnabled then
-if rootPart then
-originalMountainPos = rootPart.CFrame
-end
-​local mountainTimer = 0
-mountainConnection = RunService.RenderStepped:Connect(function(dt)
-if mountainKingEnabled then
-pcall(function()
-local char = LocalPlayer.Character
-local rp = char and char:FindFirstChild("HumanoidRootPart")
-​if rp then
-mountainTimer = mountainTimer + dt
-if mountainTimer < 0.6 then
-rp.CFrame = CFrame.new(229, 164, -286)
-elseif mountainTimer < 1.2 then
-rp.CFrame = CFrame.new(260, 112, -291)
-else
-mountainTimer = 0
-end
-end
-end)
-else
-if mountainConnection then
-mountainConnection:Disconnect()
-mountainConnection = nil
-end
-end
-end)
-else
-if mountainConnection then
-mountainConnection:Disconnect()
-mountainConnection = nil
-end
-​if originalMountainPos and rootPart then
-rootPart.CFrame = originalMountainPos
-end
-originalMountainPos = nil
-end
-end,
+   Title = "Buy All Ranks",
+   Value = false,
+   Callback = function(Value)
+      buyRanksEnabled = Value
+      
+      if buyRanksEnabled then
+         task.spawn(function()
+            local ninjaEvent = LocalPlayer:WaitForChild("ninjaEvent")
+            
+            while buyRanksEnabled do
+               pcall(function()
+                  local ranksFolder = ReplicatedStorage:FindFirstChild("Ranks")
+                  local groundFolder = ranksFolder and (ranksFolder:FindFirstChild("Ground") or ranksFolder)
+                  
+                  if groundFolder then
+                     for _, rank in ipairs(groundFolder:GetChildren()) do
+                        if not buyRanksEnabled then break end
+                        ninjaEvent:FireServer("buyRank", rank.Name)
+                        task.wait(0.02)
+                     end
+                  else
+                     if ranksFolder then
+                        for _, rank in ipairs(ranksFolder:GetDescendants()) do
+                           if not buyRanksEnabled then break end
+                           if rank:IsA("Configuration") or rank:IsA("ValueBase") or rank:IsA("Folder") then
+                              ninjaEvent:FireServer("buyRank", rank.Name)
+                           end
+                        end
+                     end
+                  end
+               end)
+               task.wait(0.15)
+            end
+         end)
+      end
+   end,
 })
-​MainTab:Toggle({
-Title = "Farm Hoops",
-Value = false,
-Callback = function(Value)
-farmHoopsEnabled = Value
-​if hoopsConnection then
-hoopsConnection:Disconnect()
-hoopsConnection = nil
-end
-​if farmHoopsEnabled then
-hoopsConnection = RunService.RenderStepped:Connect(function()
-if farmHoopsEnabled then
-pcall(function()
-local hoopsFolder = Workspace:FindFirstChild("Hoops") or Workspace:FindFirstChild("Rings")
-if hoopsFolder then
-local hoopRemote = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("hoopEvent")
-​for _, hoop in ipairs(hoopsFolder:GetChildren()) do
-if not farmHoopsEnabled then break end
-​if hoop and hoop.Parent then
-local args = {
-"useHoop",
-hoop
-}
-hoopRemote:FireServer(unpack(args))
-end
-end
-end
-end)
-else
-if hoopsConnection then
-hoopsConnection:Disconnect()
-hoopsConnection = nil
-end
-end
-end)
-end
-end,
+
+MainTab:Toggle({
+   Title = "Buy All Belts",
+   Value = false,
+   Callback = function(Value)
+      buyBeltsEnabled = Value
+      
+      if buyBeltsEnabled then
+         task.spawn(function()
+            local ninjaEvent = LocalPlayer:WaitForChild("ninjaEvent")
+            
+            while buyBeltsEnabled do
+               pcall(function()
+                  local unlockFolder = Workspace:FindFirstChild("islandUnlockParts")
+                  if unlockFolder then
+                     for _, island in ipairs(unlockFolder:GetChildren()) do
+                        if not buyBeltsEnabled then break end
+                        ninjaEvent:FireServer("buyAllBelts", island.Name)
+                        task.wait(0.05)
+                     end
+                  else
+                     ninjaEvent:FireServer("buyAllBelts", "Ground")
+                  end
+               end)
+               task.wait(0.2)
+            end
+         end)
+      end
+   end,
 })
-​-- ========================================================
+
+local originalSellPos = nil
+MainTab:Toggle({
+   Title = "Auto Sell",
+   Value = false,
+   Callback = function(Value)
+      autoSellEnabled = Value
+      
+      local character = LocalPlayer.Character
+      local rootPart = character and character:FindFirstChild("HumanoidRootPart")
+      
+      if autoSellEnabled then
+         if rootPart then
+            originalSellPos = rootPart.CFrame
+         end
+         
+         local toggleTimer = 0
+         sellConnection = RunService.RenderStepped:Connect(function(dt)
+            if autoSellEnabled then
+               pcall(function()
+                  local char = LocalPlayer.Character
+                  local rp = char and char:FindFirstChild("HumanoidRootPart")
+                  
+                  if rp then
+                     toggleTimer = toggleTimer + dt
+                     if toggleTimer < 0.6 then
+                        rp.CFrame = CFrame.new(77, 3, -53)
+                     elseif toggleTimer < 1.2 then
+                        rp.CFrame = CFrame.new(97, 3, -60)
+                     else
+                        toggleTimer = 0
+                     end
+                  end
+               end)
+            else
+               if sellConnection then
+                  sellConnection:Disconnect()
+                  sellConnection = nil
+               end
+            end
+         end)
+      else
+         if sellConnection then
+            sellConnection:Disconnect()
+            sellConnection = nil
+         end
+         
+         if originalSellPos and rootPart then
+            rootPart.CFrame = originalSellPos
+         end
+         originalSellPos = nil
+      end
+   end,
+})
+
+local originalMountainPos = nil
+MainTab:Toggle({
+   Title = "Mountain King Farm",
+   Value = false,
+   Callback = function(Value)
+      mountainKingEnabled = Value
+      
+      local character = LocalPlayer.Character
+      local rootPart = character and character:FindFirstChild("HumanoidRootPart")
+      
+      if mountainKingEnabled then
+         if rootPart then
+            originalMountainPos = rootPart.CFrame
+         end
+         
+         local mountainTimer = 0
+         mountainConnection = RunService.RenderStepped:Connect(function(dt)
+            if mountainKingEnabled then
+               pcall(function()
+                  local char = LocalPlayer.Character
+                  local rp = char and char:FindFirstChild("HumanoidRootPart")
+                  
+                  if rp then
+                     mountainTimer = mountainTimer + dt
+                     if mountainTimer < 0.6 then
+                        rp.CFrame = CFrame.new(229, 164, -286)
+                     elseif mountainTimer < 1.2 then
+                        rp.CFrame = CFrame.new(260, 112, -291)
+                     else
+                        mountainTimer = 0
+                     end
+                  end
+               end)
+            else
+               if mountainConnection then
+                  mountainConnection:Disconnect()
+                  mountainConnection = nil
+               end
+            end
+         end)
+      else
+         if mountainConnection then
+            mountainConnection:Disconnect()
+            mountainConnection = nil
+         end
+         
+         if originalMountainPos and rootPart then
+            rootPart.CFrame = originalMountainPos
+         end
+         originalMountainPos = nil
+      end
+   end,
+})
+
+MainTab:Toggle({
+   Title = "Farm Hoops",
+   Value = false,
+   Callback = function(Value)
+      farmHoopsEnabled = Value
+      
+      if hoopsConnection then
+         hoopsConnection:Disconnect()
+         hoopsConnection = nil
+      end
+      
+      if farmHoopsEnabled then
+         hoopsConnection = RunService.RenderStepped:Connect(function()
+            if farmHoopsEnabled then
+               pcall(function()
+                  local hoopsFolder = Workspace:FindFirstChild("Hoops") or Workspace:FindFirstChild("Rings")
+                  if hoopsFolder then
+                     local hoopRemote = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("hoopEvent")
+                     
+                     for _, hoop in ipairs(hoopsFolder:GetChildren()) do
+                        if not farmHoopsEnabled then break end
+                        
+                        if hoop and hoop.Parent then
+                           local args = {
+                              "useHoop",
+                              hoop
+                           }
+                           hoopRemote:FireServer(unpack(args))
+                        end
+                     end
+                  end
+               end)
+            else
+               if hoopsConnection then
+                  hoopsConnection:Disconnect()
+                  hoopsConnection = nil
+               end
+            end
+         end)
+      end
+   end,
+})
+
+-- ========================================================
 -- ABA CRYSTALS
 -- ========================================================
 local crystalsList = {}
 local crystalsFolder = Workspace:WaitForChild("mapCrystalsFolder", 10) or Workspace:WaitForChild("crystalsFolder", 5) or Workspace:WaitForChild("Crystals", 5)
-​if crystalsFolder then
-for _, crystal in ipairs(crystalsFolder:GetChildren()) do
-table.insert(crystalsList, crystal.Name)
+
+if crystalsFolder then
+   for _, crystal in ipairs(crystalsFolder:GetChildren()) do
+      table.insert(crystalsList, crystal.Name)
+   end
 end
-end
-​if #crystalsList == 0 then
-table.insert(crystalsList, "Nenhum cristal encontrado")
+
+if #crystalsList == 0 then
+   table.insert(crystalsList, "Nenhum cristal encontrado")
 else
-selectedCrystalName = crystalsList[1]
+   selectedCrystalName = crystalsList[1]
 end
-​CrystalsTab:Dropdown({
-Title = "Select Crystal",
-Values = crystalsList,
-Value = selectedCrystalName,
-Callback = function(Option)
-selectedCrystalName = Option
-end,
+
+CrystalsTab:Dropdown({
+   Title = "Select Crystal",
+   Values = crystalsList,
+   Value = selectedCrystalName,
+   Callback = function(Option)
+      selectedCrystalName = Option
+   end,
 })
-​CrystalsTab:Toggle({
-Title = "Auto Open Selected Crystal",
-Value = false,
-Callback = function(Value)
-autoOpenSelectedCrystalEnabled = Value
-​if autoOpenSelectedCrystalEnabled then
-task.spawn(function()
-local crystalRemote = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("openCrystalRemote")
-​while autoOpenSelectedCrystalEnabled do
-pcall(function()
-if selectedCrystalName ~= "" and selectedCrystalName ~= "Nenhum cristal encontrado" then
-local args = {
-"openCrystal",
-selectedCrystalName
-}
-crystalRemote:InvokeServer(unpack(args))
-end
-end)
-task.wait(0.1)
-end
-end)
-end
-end,
+
+CrystalsTab:Toggle({
+   Title = "Auto Open Selected Crystal",
+   Value = false,
+   Callback = function(Value)
+      autoOpenSelectedCrystalEnabled = Value
+      
+      if autoOpenSelectedCrystalEnabled then
+         task.spawn(function()
+            local crystalRemote = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("openCrystalRemote")
+            
+            while autoOpenSelectedCrystalEnabled do
+               pcall(function()
+                  if selectedCrystalName ~= "" and selectedCrystalName ~= "Nenhum cristal encontrado" then
+                     local args = {
+                        "openCrystal",
+                        selectedCrystalName
+                     }
+                     crystalRemote:InvokeServer(unpack(args))
+                  end
+               end)
+               task.wait(0.1)
+            end
+         end)
+      end
+   end,
 })
-​CrystalsTab:Toggle({
-Title = "Auto Evolve Pets",
-Value = false,
-Callback = function(Value)
-autoEvolvePetsEnabled = Value
-​if autoEvolvePetsEnabled then
-task.spawn(function()
-while autoEvolvePetsEnabled do
-pcall(function()
-local evolveRemote = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("autoEvolveRemote")
-evolveRemote:InvokeServer("autoEvolvePets")
-end)
-task.wait(0.5)
-end
-end)
-end
-end,
+
+CrystalsTab:Toggle({
+   Title = "Auto Evolve Pets",
+   Value = false,
+   Callback = function(Value)
+      autoEvolvePetsEnabled = Value
+      
+      if autoEvolvePetsEnabled then
+         task.spawn(function()
+            while autoEvolvePetsEnabled do
+               pcall(function()
+                  local evolveRemote = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("autoEvolveRemote")
+                  evolveRemote:InvokeServer("autoEvolvePets")
+               end)
+               task.wait(0.5)
+            end
+         end)
+      end
+   end,
 })
-​-- ========================================================
+
+-- ========================================================
 -- ABA KILL
 -- ========================================================
 task.spawn(function()
-local bossFolder = Workspace:WaitForChild("bossFolder", 10) or Workspace:WaitForChild("Bosses", 5) or Workspace:WaitForChild("bossesFolder", 5)
-​if bossFolder then
-for _, boss in ipairs(bossFolder:GetChildren()) do
-local bossName = boss.Name
-local toggleTitle = "Hit " .. bossName
-​local isBossActive = false
-local originalBossPos = nil
-local bossConnection = nil
-​KillTab:Toggle({
-Title = toggleTitle,
-Value = false,
-Callback = function(Value)
-isBossActive = Value
-​local character = LocalPlayer.Character
-local rootPart = character and character:FindFirstChild("HumanoidRootPart")
-​if isBossActive then
-if rootPart then
-originalBossPos = rootPart.CFrame
-end
-​bossConnection = RunService.RenderStepped:Connect(function()
-if isBossActive then
-pcall(function()
-local char = LocalPlayer.Character
-if char then
-equipOwnedSwordOnly(char)
-end
-​local rp = char and char:FindFirstChild("HumanoidRootPart")
-local head = boss:FindFirstChild("Head") or boss:FindFirstChild("HumanoidRootPart") or boss:FindFirstChildWhichIsA("BasePart")
-​if rp and head then
-rp.CFrame = head.CFrame * CFrame.new(0, 3, 2)
-rp.Velocity = Vector3.new(0, 0, 0)
-end
-​VirtualUser:Button1Down(Vector2.new(0,0))
-VirtualUser:Button1Up(Vector2.new(0,0))
+   local bossFolder = Workspace:WaitForChild("bossFolder", 10) or Workspace:WaitForChild("Bosses", 5) or Workspace:WaitForChild("bossesFolder", 5)
+   
+   if bossFolder then
+      for _, boss in ipairs(bossFolder:GetChildren()) do
+         local bossName = boss.Name
+         local toggleTitle = "Hit " .. bossName
+         
+         local isBossActive = false
+         local originalBossPos = nil
+         local bossConnection = nil
+         
+         KillTab:Toggle({
+            Title = toggleTitle,
+            Value = false,
+            Callback = function(Value)
+               isBossActive = Value
+               
+               local character = LocalPlayer.Character
+               local rootPart = character and character:FindFirstChild("HumanoidRootPart")
+               
+               if isBossActive then
+                  if rootPart then
+                     originalBossPos = rootPart.CFrame
+                  end
+                  
+                  bossConnection = RunService.RenderStepped:Connect(function()
+                     if isBossActive then
+                        pcall(function()
+                           local char = LocalPlayer.Character
+                           if char then
+                              equipOwnedSwordOnly(char)
+                           end
+                           
+                           local rp = char and char:FindFirstChild("HumanoidRootPart")
+                           local head = boss:FindFirstChild("Head") or boss:FindFirstChild("HumanoidRootPart") or boss:FindFirstChildWhichIsA("BasePart")
+                           
+                           if rp and head then
+                              rp.CFrame = head.CFrame * CFrame.new(0, 3, 2)
+                              rp.Velocity = Vector3.new(0, 0, 0)
+                           end
+                           
+                           VirtualUser:Button1Down(Vector2.new(0,0))
+                           VirtualUser:Button1Up(Vector2.new(0,0))
+                        end)
+                     else
+                        if bossConnection then
+                           bossConnection:Disconnect()
+                           bossConnection = nil
+                        end
+                     end
+                  end)
+               else
+                  if bossConnection then
+                     bossConnection:Disconnect()
+                     bossConnection = nil
+                  end
+                  
+                  if originalBossPos and rootPart then
+                     rootPart.CFrame = originalBossPos
+                  end
+                  originalBossPos = nil
+               end
+            end,
+         })
+      end
+   else
+      KillTab:Toggle({
+         Title = "Erro: bossFolder não encontrada",
+         Value = false,
+         Callback = function() end
+      })
+   end
 end)
-else
-if bossConnection then
-bossConnection:Disconnect()
-bossConnection = nil
-end
-end
-end)
-else
-if bossConnection then
-bossConnection:Disconnect()
-bossConnection = nil
-end
-​if originalBossPos and rootPart then
-rootPart.CFrame = originalBossPos
-end
-originalBossPos = nil
-end
-end,
-})
-end
-else
-KillTab:Toggle({
-Title = "Erro: bossFolder não encontrada",
-Value = false,
-Callback = function() end
-})
-end
-end)
-​-- ========================================================
+
+-- ========================================================
 -- ABA CLIENT
 -- ========================================================
 local lootConnection = nil
 ClientTab:Toggle({
-Title = "Farm Loot",
-Value = false,
-Callback = function(Value)
-farmLootEnabled = Value
-​if lootConnection then
-lootConnection = nil
-end
-​if farmLootEnabled then
-task.spawn(function()
-while farmLootEnabled do
-pcall(function()
-local character = LocalPlayer.Character
-if character then
-local spawnedCoins = Workspace:FindFirstChild("spawnedCoins")
-if spawnedCoins then
-local valleyFolder = spawnedCoins:FindFirstChild("Valley")
-​if valleyFolder then
-for _, item in ipairs(valleyFolder:GetDescendants()) do
-if not farmLootEnabled then break end
-​local targetPart = nil
-if item:IsA("BasePart") then
-targetPart = item
-elseif item:IsA("Model") then
-targetPart = item.PrimaryPart or item:FindFirstChild("Handle") or item:FindFirstChildWhichIsA("BasePart")
-end
-​if targetPart then
-local rootPart = character:FindFirstChild("HumanoidRootPart")
-if rootPart then
-rootPart.CFrame = targetPart.CFrame + Vector3.new(0, 2, 0)
-if firetouchinterest then
-firetouchinterest(rootPart, targetPart, 0)
-firetouchinterest(rootPart, targetPart, 1)
-end
-end
-task.wait(0.05)
-end
-end
-end
-end
-end
-end)
-task.wait(0.5)
-end
-end)
-end
-end,
+   Title = "Farm Loot",
+   Value = false,
+   Callback = function(Value)
+      farmLootEnabled = Value
+      
+      if lootConnection then
+         lootConnection = nil
+      end
+      
+      if farmLootEnabled then
+         task.spawn(function()
+            while farmLootEnabled do
+               pcall(function()
+                  local character = LocalPlayer.Character
+                  if character then
+                     local spawnedCoins = Workspace:FindFirstChild("spawnedCoins")
+                     if spawnedCoins then
+                        local valleyFolder = spawnedCoins:FindFirstChild("Valley")
+                        
+                        if valleyFolder then
+                           for _, item in ipairs(valleyFolder:GetDescendants()) do
+                              if not farmLootEnabled then break end
+                              
+                              local targetPart = nil
+                              if item:IsA("BasePart") then
+                                 targetPart = item
+                              elseif item:IsA("Model") then
+                                 targetPart = item.PrimaryPart or item:FindFirstChild("Handle") or item:FindFirstChildWhichIsA("BasePart")
+                              end
+                              
+                              if targetPart then
+                                 local rootPart = character:FindFirstChild("HumanoidRootPart")
+                                 if rootPart then
+                                    rootPart.CFrame = targetPart.CFrame + Vector3.new(0, 2, 0)
+                                    if firetouchinterest then
+                                       firetouchinterest(rootPart, targetPart, 0)
+                                       firetouchinterest(rootPart, targetPart, 1)
+                                    end
+                                 end
+                                 task.wait(0.05)
+                              end
+                           end
+                        end
+                     end
+                  end
+               end)
+               task.wait(0.5)
+            end
+         end)
+      end
+   end,
 })
-​ClientTab:Button({
-Title = "Mastery All Elements",
-Callback = function()
-task.spawn(function()
-pcall(function()
-local elementMasteryEvent = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("elementMasteryEvent")
-if elementMasteryEvent then
-elementMasteryEvent:FireServer("Shadow Charge")
-elementMasteryEvent:FireServer("Electral Chaos")
-elementMasteryEvent:FireServer("Blazing Entity")
-elementMasteryEvent:FireServer("Shadowfire")
-elementMasteryEvent:FireServer("Lightning")
-elementMasteryEvent:FireServer("Masterful Wrath")
-elementMasteryEvent:FireServer("Inferno")
-elementMasteryEvent:FireServer("Eternity Storm")
-elementMasteryEvent:FireServer("Frost")
-end
-end)
-​WindUI:Notify({
-Title = "Element Mastery",
-Content = "Comandos de mastery enviados para todos os elementos!",
-Duration = 3,
-Icon = "check"
+
+ClientTab:Button({
+   Title = "Mastery All Elements",
+   Callback = function()
+      task.spawn(function()
+         pcall(function()
+            local elementMasteryEvent = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("elementMasteryEvent")
+            if elementMasteryEvent then
+               elementMasteryEvent:FireServer("Shadow Charge")
+               elementMasteryEvent:FireServer("Electral Chaos")
+               elementMasteryEvent:FireServer("Blazing Entity")
+               elementMasteryEvent:FireServer("Shadowfire")
+               elementMasteryEvent:FireServer("Lightning")
+               elementMasteryEvent:FireServer("Masterful Wrath")
+               elementMasteryEvent:FireServer("Inferno")
+               elementMasteryEvent:FireServer("Eternity Storm")
+               elementMasteryEvent:FireServer("Frost")
+            end
+         end)
+         
+         WindUI:Notify({
+            Title = "Element Mastery",
+            Content = "Comandos de mastery enviados para todos os elementos!",
+            Duration = 3,
+            Icon = "check"
+         })
+      end)
+   end,
 })
-end)
-end,
+
+ClientTab:Button({
+   Title = "Claim All Chests",
+   Callback = function()
+      task.spawn(function()
+         pcall(function()
+            local chestRemote = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("checkChestRemote")
+            local chestRewardsFolder = Workspace:FindFirstChild("chestRewards") or Workspace:FindFirstChild("Chests")
+            
+            local chestList = {
+               "Golden Chest", "Silver Chest", "Wooden Chest", "Magma Chest",
+               "Legends Chest", "Eternal Chest", "Sahara Chest", "Thunder Chest",
+               "Ancient Chest", "Midnight Shadow Chest", "Mythical Chest", "Wonder Chest"
+            }
+            
+            if chestRewardsFolder then
+               for _, chestModel in ipairs(chestRewardsFolder:GetChildren()) do
+                  if not table.find(chestList, chestModel.Name) then
+                     table.insert(chestList, chestModel.Name)
+                  end
+               end
+            end
+            
+            for _, chestName in ipairs(chestList) do
+               pcall(function()
+                  chestRemote:InvokeServer(chestName)
+               end)
+               task.wait(0.1)
+            end
+         end)
+         
+         WindUI:Notify({
+            Title = "Chest Rewards",
+            Content = "Tentativa de resgate enviada para todos os baús!",
+            Duration = 3,
+            Icon = "check"
+         })
+      end)
+   end,
 })
-​ClientTab:Button({
-Title = "Claim All Chests",
-Callback = function()
-task.spawn(function()
-pcall(function()
-local chestRemote = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("checkChestRemote")
-local chestRewardsFolder = Workspace:FindFirstChild("chestRewards") or Workspace:FindFirstChild("Chests")
-​local chestList = {
-"Golden Chest", "Silver Chest", "Wooden Chest", "Magma Chest",
-"Legends Chest", "Eternal Chest", "Sahara Chest", "Thunder Chest",
-"Ancient Chest", "Midnight Shadow Chest", "Mythical Chest", "Wonder Chest"
-}
-​if chestRewardsFolder then
-for _, chestModel in ipairs(chestRewardsFolder:GetChildren()) do
-if not table.find(chestList, chestModel.Name) then
-table.insert(chestList, chestModel.Name)
-end
-end
-end
-​for _, chestName in ipairs(chestList) do
-pcall(function()
-chestRemote:InvokeServer(chestName)
-end)
-task.wait(0.1)
-end
-end)
-​WindUI:Notify({
-Title = "Chest Rewards",
-Content = "Tentativa de resgate enviada para todos os baús!",
-Duration = 3,
-Icon = "check"
-})
-end)
-end,
-})
-​ClientTab:Toggle({
-Title = "Buy All Skills",
-Value = false,
-Callback = function(Value)
-buySkillsEnabled = Value
-​if buySkillsEnabled then
-task.spawn(function()
-local ninjaEvent = LocalPlayer:WaitForChild("ninjaEvent")
-​while buySkillsEnabled do
-pcall(function()
-local unlockFolder = Workspace:FindFirstChild("islandUnlockParts")
-if unlockFolder then
-for _, island in ipairs(unlockFolder:GetChildren()) do
-if not buySkillsEnabled then break end
-ninjaEvent:FireServer("buyAllSkills", island.Name)
-task.wait(0.05)
-end
-else
-ninjaEvent:FireServer("buyAllSkills", "Ground")
-end
-end)
-task.wait(0.2)
-end
-end)
-end
-end,
-})
-​ClientTab:Toggle({
-Title = "Buy All Shurikens",
-Value = false,
-Callback = function(Value)
-buyShurikensEnabled = Value
-​if buyShurikensEnabled then
-task.spawn(function()
-local ninjaEvent = LocalPlayer:WaitForChild("ninjaEvent")
-​while buyShurikensEnabled do
-pcall(function()
-local unlockFolder = Workspace:FindFirstChild("islandUnlockParts")
-if unlockFolder then
-for _, island in ipairs(unlockFolder:GetChildren()) do
-if not buyShurikensEnabled then break end
-ninjaEvent:FireServer("buyAllShurikens", island.Name)
-task.wait(0.05)
-end
-else
-ninjaEvent:FireServer("buyAllShurikens", "Ground")
-end
-end)
-task.wait(0.2)
-end
-end)
-end
-end,
-})
-​local originalIslandPos = nil
+
 ClientTab:Toggle({
-Title = "Unlock All Islands",
-Value = false,
-Callback = function(Value)
-unlockIslandsEnabled = Value
-​local character = LocalPlayer.Character
-local rootPart = character and character:FindFirstChild("HumanoidRootPart")
-​if unlockIslandsEnabled then
-if rootPart then
-originalIslandPos = rootPart.CFrame
-end
-​task.spawn(function()
-while unlockIslandsEnabled do
-pcall(function()
-local char = LocalPlayer.Character
-local rp = char and char:FindFirstChild("HumanoidRootPart")
-​if rp then
-local unlockFolder = Workspace:FindFirstChild("islandUnlockParts")
-if unlockFolder then
-for _, islandPart in ipairs(unlockFolder:GetDescendants()) do
-if not unlockIslandsEnabled then break end
-​local targetPart = nil
-if islandPart:IsA("BasePart") then
-targetPart = islandPart
-elseif islandPart:IsA("Model") then
-targetPart = islandPart.PrimaryPart or islandPart:FindFirstChildWhichIsA("BasePart")
-end
-​if targetPart me
-rp.CFrame = targetPart.CFrame + Vector3.new(0, 3, 0)
-task.wait(0.5)
-end
-end
-end
-end
-end)
-task.wait(2)
-end
-end)
-else
-if originalIslandPos and rootPart then
-rootPart.CFrame = originalIslandPos
-end
-originalIslandPos = nil
-end
-end,
+   Title = "Buy All Skills",
+   Value = false,
+   Callback = function(Value)
+      buySkillsEnabled = Value
+      
+      if buySkillsEnabled then
+         task.spawn(function()
+            local ninjaEvent = LocalPlayer:WaitForChild("ninjaEvent")
+            
+            while buySkillsEnabled do
+               pcall(function()
+                  local unlockFolder = Workspace:FindFirstChild("islandUnlockParts")
+                  if unlockFolder then
+                     for _, island in ipairs(unlockFolder:GetChildren()) do
+                        if not buySkillsEnabled then break end
+                        ninjaEvent:FireServer("buyAllSkills", island.Name)
+                        task.wait(0.05)
+                     end
+                  else
+                     ninjaEvent:FireServer("buyAllSkills", "Ground")
+                  end
+               end)
+               task.wait(0.2)
+            end
+         end)
+      end
+   end,
 })
-​ClientTab:Toggle({
-Title = "Multi Jump Boost",
-Value = false,
-Callback = function(Value)
-multiJumpEnabled = Value
-​if multiJumpEnabled then
-task.spawn(function()
-while multiJumpEnabled do
-pcall(function()
-local character = LocalPlayer.Character
-if character then
-local multiJump = character:FindFirstChild("multiJumpCount") or LocalPlayer:FindFirstChild("multiJumpCount")
-if multiJump and multiJump:IsA("ValueBase") then
-multiJump.Value = 50
-end
-end
-end)
-task.wait(1)
-end
-end)
-end
-end,
+
+ClientTab:Toggle({
+   Title = "Buy All Shurikens",
+   Value = false,
+   Callback = function(Value)
+      buyShurikensEnabled = Value
+      
+      if buyShurikensEnabled then
+         task.spawn(function()
+            local ninjaEvent = LocalPlayer:WaitForChild("ninjaEvent")
+            
+            while buyShurikensEnabled do
+               pcall(function()
+                  local unlockFolder = Workspace:FindFirstChild("islandUnlockParts")
+                  if unlockFolder then
+                     for _, island in ipairs(unlockFolder:GetChildren()) do
+                        if not buyShurikensEnabled then break end
+                        ninjaEvent:FireServer("buyAllShurikens", island.Name)
+                        task.wait(0.05)
+                     end
+                  else
+                     ninjaEvent:FireServer("buyAllShurikens", "Ground")
+                  end
+               end)
+               task.wait(0.2)
+            end
+         end)
+      end
+   end,
 })
-​-- ========================================================
+
+local originalIslandPos = nil
+ClientTab:Toggle({
+   Title = "Unlock All Islands",
+   Value = false,
+   Callback = function(Value)
+      unlockIslandsEnabled = Value
+      
+      local character = LocalPlayer.Character
+      local rootPart = character and character:FindFirstChild("HumanoidRootPart")
+      
+      if unlockIslandsEnabled then
+         if rootPart then
+            originalIslandPos = rootPart.CFrame
+         end
+         
+         task.spawn(function()
+            while unlockIslandsEnabled do
+               pcall(function()
+                  local char = LocalPlayer.Character
+                  local rp = char and char:FindFirstChild("HumanoidRootPart")
+                  
+                  if rp then
+                     local unlockFolder = Workspace:FindFirstChild("islandUnlockParts")
+                     if unlockFolder then
+                        for _, islandPart in ipairs(unlockFolder:GetDescendants()) do
+                           if not unlockIslandsEnabled then break end
+                           
+                           local targetPart = nil
+                           if islandPart:IsA("BasePart") then
+                              targetPart = islandPart
+                           elseif islandPart:IsA("Model") then
+                              targetPart = islandPart.PrimaryPart or islandPart:FindFirstChildWhichIsA("BasePart")
+                           end
+                           
+                           if targetPart then
+                              rp.CFrame = targetPart.CFrame + Vector3.new(0, 3, 0)
+                              task.wait(0.5)
+                           end
+                        end
+                     end
+                  end
+               end)
+               task.wait(2)
+            end
+         end)
+      else
+         if originalIslandPos and rootPart then
+            rootPart.CFrame = originalIslandPos
+         end
+         originalIslandPos = nil
+      end
+   end,
+})
+
+ClientTab:Toggle({
+   Title = "Multi Jump Boost",
+   Value = false,
+   Callback = function(Value)
+      multiJumpEnabled = Value
+      
+      if multiJumpEnabled then
+         task.spawn(function()
+            while multiJumpEnabled do
+               pcall(function()
+                  local character = LocalPlayer.Character
+                  if character then
+                     local multiJump = character:FindFirstChild("multiJumpCount") or LocalPlayer:FindFirstChild("multiJumpCount")
+                     if multiJump and multiJump:IsA("ValueBase") then
+                        multiJump.Value = 50
+                     end
+                  end
+               end)
+               task.wait(1)
+            end
+         end)
+      end
+   end,
+})
+
+-- ========================================================
 -- ABA OP: INFINITE GEMS, AUTO MONEY & ELEMENT MASTERY SELECT
 -- ========================================================
 OpTab:Paragraph({
-Title = "Instruções OP",
-Content = "Para obter tudo infinito, basta clicar no botão Infinite Gems, e clicar em Mastery All Elements (na aba Client), depois é só usar o auto money para ganhar dinheiro infinitamente automaticamente, sem ter erros de negativo. Você precisa não ter os elementos masterizados, ou crie uma nova conta."
+   Title = "Instruções OP",
+   Content = "Para obter tudo infinito, basta clicar no botão Infinite Gems, e clicar em Mastery All Elements (na aba Client), depois é só usar o auto money para ganhar dinheiro infinitamente automaticamente, sem ter erros de negativo. Você precisa não ter os elementos masterizados, ou crie uma nova conta."
 })
-​local elementsList = {
-"Shadow Charge",
-"Electral Chaos",
-"Blazing Entity",
-"Shadowfire",
-"Lightning",
-"Masterful Wrath",
-"Inferno",
-"Eternity Storm",
-"Frost"
+
+local elementsList = {
+   "Shadow Charge",
+   "Electral Chaos",
+   "Blazing Entity",
+   "Shadowfire",
+   "Lightning",
+   "Masterful Wrath",
+   "Inferno",
+   "Eternity Storm",
+   "Frost"
 }
-​OpTab:Dropdown({
-Title = "Mastery Element Select",
-Values = elementsList,
-Value = selectedElementMastery,
-Callback = function(Option)
-selectedElementMastery = Option
-end,
+
+OpTab:Dropdown({
+   Title = "Mastery Element Select",
+   Values = elementsList,
+   Value = selectedElementMastery,
+   Callback = function(Option)
+      selectedElementMastery = Option
+   end,
 })
-​OpTab:Button({
-Title = "Mastery Selected Element",
-Callback = function()
-task.spawn(function()
-pcall(function()
-local elementMasteryEvent = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("elementMasteryEvent")
-if elementMasteryEvent and selectedElementMastery ~= "" then
-elementMasteryEvent:FireServer(selectedElementMastery)
-end
-end)
-​WindUI:Notify({
-Title = "Element Mastery",
-Content = "Elemento " .. tostring(selectedElementMastery) .. " masterizado!",
-Duration = 3,
-Icon = "check"
+
+OpTab:Button({
+   Title = "Mastery Selected Element",
+   Callback = function()
+      task.spawn(function()
+         pcall(function()
+            local elementMasteryEvent = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("elementMasteryEvent")
+            if elementMasteryEvent and selectedElementMastery ~= "" then
+               elementMasteryEvent:FireServer(selectedElementMastery)
+            end
+         end)
+         
+         WindUI:Notify({
+            Title = "Element Mastery",
+            Content = "Elemento " .. tostring(selectedElementMastery) .. " masterizado!",
+            Duration = 3,
+            Icon = "check"
+         })
+      end)
+   end,
 })
-end)
-end,
+
+OpTab:Button({
+   Title = "Infinite Gems",
+   Callback = function()
+      task.spawn(function()
+         pcall(function()
+            local zenMasterEvent = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("zenMasterEvent")
+            if zenMasterEvent then
+               zenMasterEvent:FireServer("convertGems", -math.huge)
+            end
+         end)
+         
+         WindUI:Notify({
+            Title = "Infinite Gems",
+            Content = "Gatilho de gems infinitas enviado!",
+            Duration = 3,
+            Icon = "check"
+         })
+      end)
+   end,
 })
-​OpTab:Button({
-Title = "Infinite Gems",
-Callback = function()
-task.spawn(function()
-pcall(function()
-local zenMasterEvent = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("zenMasterEvent")
-if zenMasterEvent then
-zenMasterEvent:FireServer("convertGems", -math.huge)
-end
-end)
-​WindUI:Notify({
-Title = "Infinite Gems",
-Content = "Gatilho de gems infinitas enviado!",
-Duration = 3,
-Icon = "check"
+
+OpTab:Toggle({
+   Title = "Auto Money",
+   Value = false,
+   Callback = function(Value)
+      autoMoneyEnabled = Value
+      
+      if autoMoneyEnabled then
+         task.spawn(function()
+            while autoMoneyEnabled do
+               pcall(function()
+                  local zenMasterEvent = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("zenMasterEvent")
+                  if zenMasterEvent then
+                     zenMasterEvent:FireServer("convertGems", 1E+300)
+                  end
+               end)
+               task.wait(0.1)
+            end
+         end)
+      end
+   end,
 })
-end)
-end,
-})
-​OpTab:Toggle({
-Title = "Auto Money",
-Value = false,
-Callback = function(Value)
-autoMoneyEnabled = Value
-​if autoMoneyEnabled then
-task.spawn(function()
-while autoMoneyEnabled do
-pcall(function()
-local zenMasterEvent = ReplicatedStorage:WaitForChild("rEvents"):WaitForChild("zenMasterEvent")
-if zenMasterEvent then
-zenMasterEvent:FireServer("convertGems", 1E+300)
-end
-end)
-task.wait(0.1)
-end
-end)
-end
-end,
-})
-​-- Notificação Inicial via WindUI
+
+-- Notificação Inicial via WindUI
 WindUI:Notify({
-Title = "Ninja Legends Hub",
-Content = "Script totalmente configurado e carregado!",
-Duration = 5,
-Icon = "check"
+   Title = "Ninja Legends Hub",
+   Content = "Dropdown de Element Mastery adicionado na aba OP!",
+   Duration = 5,
+   Icon = "check"
 })
