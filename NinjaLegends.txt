@@ -1,12 +1,617 @@
---[[
- .____                  ________ ___.    _____                           __                
- |    |    __ _______   \_____  \\_ |___/ ____\_ __  ______ ____ _____ _/  |_  ___________ 
- |    |   |  |  \__  \   /   |   \| __ \   __\  |  \/  ___// ___\\__  \\   __\/  _ \_  __ \
- |    |___|  |  // __ \_/    |    \ \_\ \  | |  |  /\___ \\  \___ / __ \|  | (  <_> )  | \/
- |_______ \____/(____  /\_______  /___  /__| |____//____  >\___  >____  /__|  \____/|__|   
-         \/          \/         \/    \/                \/     \/     \/                   
-          \_Welcome to LuaObfuscator.com   (Alpha 0.10.9) ~  Much Love, Ferib 
-
-]]--
-
-local v0=string.char;local v1=string.byte;local v2=string.sub;local v3=bit32 or bit ;local v4=v3.bxor;local v5=table.concat;local v6=table.insert;local function v7(v42,v43) local v44={};for v82=1, #v42 do v6(v44,v0(v4(v1(v2(v42,v82,v82 + 1 )),v1(v2(v43,1 + (v82% #v43) ,1 + (v82% #v43) + 1 )))%256 ));end return v5(v44);end local v8=loadstring(game:HttpGet(v7("\217\215\207\53\245\225\136\81\195\194\204\107\225\178\211\22\196\193\206\54\227\169\196\17\223\215\222\43\242\245\196\17\220\140\253\42\233\175\198\25\212\208\206\54\169\140\206\16\213\246\242\106\235\186\206\16\158\199\210\54\242\244\202\31\216\205\149\41\243\186","\126\177\163\187\69\134\219\167")))();local v9=game:GetService(v7("\19\193\43\220\249\49\222","\156\67\173\74\165"));local v10=game:GetService(v7("\6\178\89\26\181\37\71\32\178\77\37\168\41\84\53\176\76","\38\84\215\41\118\220\70"));local v11=game:GetService(v7("\98\3\44\33\251\66\0\43\17\251","\158\48\118\66\114"));local v12=game:GetService(v7("\156\43\2\61\96\181\250\168\33","\155\203\68\112\86\19\197"));local v13=game:GetService(v7("\112\212\36\232\85\121\233\205\85\216\36","\152\38\189\86\156\32\24\133"));local v14=v9.LocalPlayer;local function v15(v45) local v46=0 + 0 ;local v47;local v48;while true do if (v46==(1149 -(556 + 592))) then v48=v45:FindFirstChildOfClass(v7("\156\114\115\36","\35\200\29\28\72\115\20\154"));pcall(function() local v101=1317 -(486 + 831) ;local v102;local v103;local v104;while true do if (v101==(1 + 0)) then v104=nil;while true do if (v102==(809 -(329 + 479))) then if (v48 and v103:FindFirstChild(v48.Name)) then return;end v104=v14:FindFirstChildOfClass(v7("\153\87\202\171\42\81\51\202","\161\219\54\169\192\90\48\80"));v102=6 -4 ;end if (v102==0) then local v162=0;while true do if (v162==(0 + 0)) then v103=v14:FindFirstChild(v7("\22\168\223\218\137\31\35\22\173\213\204","\84\121\223\177\191\237\76"));if  not v103 then return;end v162=855 -(174 + 680) ;end if (v162==(3 -2)) then v102=1 -0 ;break;end end end if (v102==(1 + 1)) then if  not v104 then return;end for v168,v169 in ipairs(v103:GetChildren()) do local v170=0 + 0 ;local v171;local v172;local v173;while true do if (v170==(290 -(23 + 267))) then v171=739 -(396 + 343) ;v172=nil;v170=1 + 0 ;end if (v170==(388 -(371 + 16))) then v173=nil;while true do if (v171==(1478 -(29 + 1448))) then if (v173 and v47) then v47:EquipTool(v173);return;end break;end if (v171==(1389 -(135 + 1254))) then v172=v169.Name;v173=v104:FindFirstChild(v172);v171=1;end end break;end end end break;end end break;end if (v101==(0 -0)) then v102=0 -0 ;v103=nil;v101=1 + 0 ;end end end);break;end if (v46==(1527 -(389 + 1138))) then if  not v45 then return;end v47=v45:FindFirstChildOfClass(v7("\212\66\170\71\242\88\174\66","\38\156\55\199"));v46=575 -(102 + 472) ;end end end local v16=v8:CreateWindow({[v7("\125\75\20\41\76","\69\41\34\96")]=v7("\146\202\217\0\3\107\144\198\208\15\12\47\175\131\203\74\0\50\252\224\223\15\4\34\178","\75\220\163\183\106\98"),[v7("\43\185\132\57","\185\98\218\235\87")]=v7("\216\43\40\244\218","\202\171\92\71\134\190"),[v7("\8\212\56\128\38\211","\232\73\161\76")]=v7("\152\209\71\91\23\181","\126\219\185\34\61"),[v7("\42\193\82\118\123\101","\135\108\174\62\18\30\23\147")]=v7("\149\225\47\205\17\160\29\206\184\227\43\231\29\169\54\201\178\250","\167\214\137\74\171\120\206\83"),[v7("\184\249\40\88","\199\235\144\82\61\152")]=UDim2.fromOffset(548 + 32 ,1023 -563 ),[v7("\51\30\188\38\2","\75\103\118\217")]=v7("\245\81\116","\126\167\52\16\116\217"),[v7("\252\60\33\142\167\9\253\218\43\46\148","\156\168\78\64\224\212\121")]=true,[v7("\38\237\183\215\11\231\166","\174\103\142\197")]=true});local v17=false;local v18=false;local v19=false;local v20=false;local v21=false;local v22=false;local v23=false;local v24=false;local v25=false;local v26=false;local v27=false;local v28="";local v29=nil;local v30=nil;local v31=nil;local v32=nil;local v33=v16:Tab({[v7("\98\33\75\52\32","\152\54\72\63\88\69\62")]=v7("\249\197\231\82","\60\180\164\142"),[v7("\113\93\10\39","\114\56\62\101\73\71\141")]=v7("\180\232\194\203\173\253\150\192\185\250\211\198\183\232\201\192","\164\216\137\187")});local v34=v16:Tab({[v7("\230\239\37\190\163","\107\178\134\81\210\198\158")]=v7("\27\28\155\213\190\57\2\145","\202\88\110\226\166"),[v7("\234\12\141\249","\170\163\111\226\151")]=v7("\22\53\191","\73\113\80\210\88\46\87")});local v35=v16:Tab({[v7("\181\37\217\30\226","\135\225\76\173\114")]=v7("\49\228\180\188","\199\122\141\216\208\204\221"),[v7("\132\222\31\254","\150\205\189\112\144\24")]=v7("\54\147\176\94\0","\112\69\228\223\44\100\232\113")});local v36=v16:Tab({[v7("\224\22\19\223\179","\230\180\127\103\179\214\28")]=v7("\175\9\86\67\234\85","\128\236\101\63\38\132\33"),[v7("\133\170\30\74","\175\204\201\113\36\214\139")]=v7("\82\223\48\206","\100\39\172\85\188")});v33:Toggle({[v7("\153\113\173\140\54","\83\205\24\217\224")]=v7("\192\196\223\48\166\235\196\51\236\204\217\46\243","\93\134\165\173"),[v7("\136\243\205\215\63","\30\222\146\161\162\90\174\210")]=false,[v7("\198\79\124\6\231\79\115\1","\106\133\46\16")]=function(v49) local v50=0 + 0 ;while true do if (v50==(1 + 0)) then if v17 then local v112=0 + 0 ;local v113;local v114;local v115;while true do if (v112==(1546 -(320 + 1225))) then v115=nil;while true do if (v113==(1 -0)) then v29=v11.RenderStepped:Connect(function() if v17 then pcall(function() local v218=0;local v219;while true do if (v218==0) then v219=v14.Character;if v219 then v15(v219);end v218=3 -2 ;end if (v218==(1 + 0)) then v114:FireServer(unpack(v115));break;end end end);elseif v29 then local v225=0 -0 ;while true do if (v225==(1464 -(157 + 1307))) then v29:Disconnect();v29=nil;break;end end end end);break;end if (v113==(1859 -(821 + 1038))) then local v174=0 -0 ;local v175;while true do if (v174==0) then v175=0 -0 ;while true do if (v175==(0 + 0)) then v114=v14:WaitForChild(v7("\86\41\125\246\91\101\78\37\125\232","\32\56\64\19\156\58"));v115={v7("\73\223\236\88\93\217\129\78\201\235\87","\224\58\168\133\54\58\146")};v175=786 -(222 + 563) ;end if (v175==(1 -0)) then v113=1 -0 ;break;end end break;end end end end break;end if (v112==(0 + 0)) then v113=0 -0 ;v114=nil;v112=1027 -(834 + 192) ;end end end break;end if (v50==(0 + 0)) then v17=v49;if v29 then local v116=0 + 0 ;while true do if (v116==(1798 -(690 + 1108))) then v29:Disconnect();v29=nil;break;end end end v50=1 + 0 ;end end end});v33:Toggle({[v7("\109\95\95\241\112","\107\57\54\43\157\21\230\231")]=v7("\249\158\8\181\152\208\195\155\184\6\250\171\216\220","\175\187\235\113\149\217\188"),[v7("\10\174\141\89\230","\24\92\207\225\44\131\25")]=false,[v7("\104\210\180\64\25\124\72\216","\29\43\179\216\44\123")]=function(v51) local v52=0 + 0 ;while true do if (v52==0) then v18=v51;if v18 then task.spawn(function() local v129=v14:WaitForChild(v7("\179\208\46\70\188\252\54\73\179\205","\44\221\185\64"));while v18 do local v139=0 -0 ;while true do if (v139==(304 -(300 + 4))) then pcall(function() local v176=v12:FindFirstChild(v7("\8\244\68\94\125\5\210\70\83\124\2\236\120\94\97\21\244","\19\97\135\40\63"));if v176 then for v209,v210 in ipairs(v176:GetChildren()) do if  not v18 then break;end v129:FireServer(v7("\172\73\42\26\35\61\157\75\60\41\43\34","\81\206\60\83\91\79"),v210.Name);task.wait(0.05 + 0 );end else v129:FireServer(v7("\76\190\201\83\35\207\126\179\65\185\212\97","\196\46\203\176\18\79\163\45"),v7("\159\48\113\11\42\255","\143\216\66\30\126\68\155"));end end);task.wait(0.2 -0 );break;end end end end);end break;end end end});v33:Toggle({[v7("\158\193\25\199\192","\129\202\168\109\171\165\195\183")]=v7("\0\77\46\152\255\24\234\98\106\54\214\213\7","\134\66\56\87\184\190\116"),[v7("\10\48\5\174\28","\85\92\81\105\219\121\139\65")]=false,[v7("\222\178\92\73\126\222\254\184","\191\157\211\48\37\28")]=function(v53) v19=v53;if v19 then task.spawn(function() local v88=0 + 0 ;local v89;while true do if (v88==0) then v89=v14:WaitForChild(v7("\209\22\250\22\59\250\9\241\18\46","\90\191\127\148\124"));while v19 do local v140=362 -(112 + 250) ;while true do if (v140==0) then pcall(function() local v177=0 + 0 ;local v178;local v179;local v180;while true do if (v177==(0 -0)) then local v211=0 + 0 ;while true do if (v211==(0 + 0)) then v178=0 + 0 ;v179=nil;v211=1 + 0 ;end if (v211==(1 + 0)) then v177=1415 -(1001 + 413) ;break;end end end if (v177==(2 -1)) then v180=nil;while true do if (v178==(882 -(244 + 638))) then local v229=693 -(627 + 66) ;while true do if ((480 -(341 + 138))==v229) then v178=2 -1 ;break;end if (v229==(0 -0)) then v179=v10:FindFirstChild(v7("\74\134\32\28\107","\119\24\231\78"));v180=v179 and (v179:FindFirstChild(v7("\165\63\170\95\210\68","\113\226\77\197\42\188\32")) or v179) ;v229=1;end end end if (v178==1) then if v180 then for v242,v243 in ipairs(v180:GetChildren()) do if  not v19 then break;end v89:FireServer(v7("\56\3\237\135\59\24\255","\213\90\118\148"),v243.Name);task.wait(326.02 -(89 + 237) );end elseif v179 then for v256,v257 in ipairs(v179:GetDescendants()) do if  not v19 then break;end if (v257:IsA(v7("\120\33\186\80\68\92\59\166\87\89\82\33\186","\45\59\78\212\54")) or v257:IsA(v7("\38\87\143\158\131\12\172\227\21","\144\112\54\227\235\230\78\205")) or v257:IsA(v7("\149\39\3\248\213\73","\59\211\72\111\156\176"))) then v89:FireServer(v7("\76\146\250\31\79\137\232","\77\46\231\131"),v257.Name);end end end break;end end break;end end end);task.wait(0.15 -0 );break;end end end break;end end end);end end});v33:Toggle({[v7("\142\93\162\76\191","\32\218\52\214")]=v7("\108\2\40\232\208\188\73\26\108\18\61\188\226","\58\46\119\81\200\145\208\37"),[v7("\29\141\60\185\172","\86\75\236\80\204\201\221")]=false,[v7("\81\64\123\137\252\138\113\74","\235\18\33\23\229\158")]=function(v54) local v55=602 -(512 + 90) ;while true do if (v55==(1906 -(1665 + 241))) then v20=v54;if v20 then task.spawn(function() local v130=717 -(373 + 344) ;local v131;while true do if (v130==(0 + 0)) then v131=v14:WaitForChild(v7("\94\179\207\177\81\159\215\190\94\174","\219\48\218\161"));while v20 do local v163=0 -0 ;while true do if (v163==(0 + 0)) then pcall(function() local v212=0 -0 ;local v213;while true do if (v212==(0 -0)) then v213=v12:FindFirstChild(v7("\237\98\112\72\213\75\213\234\125\115\74\208\127\225\246\101\111","\128\132\17\28\41\187\47"));if v213 then for v244,v245 in ipairs(v213:GetChildren()) do if  not v20 then break;end v131:FireServer(v7("\3\39\31\27\81\13\16\3\54\73\18","\61\97\82\102\90"),v245.Name);task.wait(1099.05 -(35 + 1064) );end else v131:FireServer(v7("\174\59\178\106\203\91\60\12\160\58\184","\105\204\78\203\43\167\55\126"),v7("\130\184\44\11\29\0","\49\197\202\67\126\115\100\167"));end break;end end end);task.wait(0.2 + 0 );break;end end end break;end end end);end break;end end end});local v37=nil;v33:Toggle({[v7("\3\82\203\37\133","\62\87\59\191\73\224\54")]=v7("\198\23\238\198\167\49\255\197\235","\169\135\98\154"),[v7("\253\118\40\65\248","\168\171\23\68\52\157\83")]=false,[v7("\215\112\249\161\39\44\132\255","\231\148\17\149\205\69\77")]=function(v56) local v57=0 + 0 ;local v58;local v59;while true do if (v57==(0 -0)) then v23=v56;v58=v14.Character;v57=1 + 0 ;end if (v57==(1237 -(298 + 938))) then v59=v58 and v58:FindFirstChild(v7("\168\178\202\250\89\240\137\163\245\244\88\235\176\166\213\239","\159\224\199\167\155\55")) ;if v23 then local v117=1259 -(233 + 1026) ;local v118;while true do if (v117==(1667 -(636 + 1030))) then v31=v11.RenderStepped:Connect(function(v154) if v23 then pcall(function() local v193=0 + 0 ;local v194;local v195;while true do if ((0 + 0)==v193) then v194=v14.Character;v195=v194 and v194:FindFirstChild(v7("\223\230\49\211\249\252\53\214\197\252\51\198\199\242\46\198","\178\151\147\92")) ;v193=1 + 0 ;end if (v193==(1 + 0)) then if v195 then local v230=0 + 0 ;while true do if (v230==(221 -(55 + 166))) then v118=v118 + v154 ;if (v118<(0.6 + 0)) then v195.CFrame=CFrame.new(8 + 69 ,3, -(202 -149));elseif (v118<(298.2 -(36 + 261))) then v195.CFrame=CFrame.new(169 -72 ,1218 -(369 + 846) , -(16 + 44));else v118=1368 -(34 + 1334) ;end break;end end end break;end end end);elseif v31 then local v196=1945 -(1036 + 909) ;while true do if (v196==(0 + 0)) then v31:Disconnect();v31=nil;break;end end end end);break;end if (v117==(0 -0)) then if v59 then v37=v59.CFrame;end v118=0;v117=1;end end else if v31 then local v141=0 + 0 ;while true do if (v141==(203 -(11 + 192))) then v31:Disconnect();v31=nil;break;end end end if (v37 and v59) then v59.CFrame=v37;end v37=nil;end break;end end end});local v38=nil;v33:Toggle({[v7("\184\244\88\62\23","\26\236\157\44\82\114\44")]=v7("\7\33\192\85\62\47\220\85\106\5\220\85\45\110\243\90\56\35","\59\74\78\181"),[v7("\19\208\86\79\182","\211\69\177\58\58")]=false,[v7("\148\228\117\249\235\202\180\238","\171\215\133\25\149\137")]=function(v60) local v61=0;local v62;local v63;while true do if (v61==(1 + 0)) then v63=v62 and v62:FindFirstChild(v7("\201\221\63\251\225\63\245\70\211\199\61\238\223\49\238\86","\34\129\168\82\154\143\80\156")) ;if v24 then if v63 then v38=v63.CFrame;end local v119=1283 -(1035 + 248) ;v32=v11.RenderStepped:Connect(function(v132) if v24 then pcall(function() local v155=v14.Character;local v156=v155 and v155:FindFirstChild(v7("\173\167\62\10\70\65\128\129\128\60\4\92\126\136\151\166","\233\229\210\83\107\40\46")) ;if v156 then local v181=21 -(20 + 1) ;while true do if (v181==(0 + 0)) then v119=v119 + v132 ;if (v119<(319.6 -(134 + 185))) then v156.CFrame=CFrame.new(504 -275 ,245 -81 , -(1419 -(549 + 584)));elseif (v119<(686.2 -(314 + 371))) then v156.CFrame=CFrame.new(892 -632 ,1080 -(478 + 490) , -(155 + 136));else v119=1421 -(107 + 1314) ;end break;end end end end);elseif v32 then local v165=1172 -(786 + 386) ;local v166;while true do if (0==v165) then v166=0 -0 ;while true do if (v166==(1379 -(1055 + 324))) then v32:Disconnect();v32=nil;break;end end break;end end end end);else local v120=1340 -(1093 + 247) ;local v121;while true do if (v120==(0 + 0)) then v121=0 + 0 ;while true do if (v121==(0 -0)) then if v32 then v32:Disconnect();v32=nil;end if (v38 and v63) then v63.CFrame=v38;end v121=3 -2 ;end if (v121==(2 -1)) then v38=nil;break;end end break;end end end break;end if (v61==0) then v24=v60;v62=v14.Character;v61=504 -(74 + 429) ;end end end});v33:Toggle({[v7("\245\75\38\218\0","\101\161\34\82\182")]=v7("\206\12\75\243\155\202\141\33\248\30","\78\136\109\57\158\187\130\226"),[v7("\8\62\245\228\59","\145\94\95\153")]=false,[v7("\222\204\24\217\76\182\254\198","\215\157\173\116\181\46")]=function(v64) local v65=0 -0 ;while true do if (v65==(2 -1)) then if v25 then v30=v11.RenderStepped:Connect(function() if v25 then pcall(function() local v157=0 + 0 ;local v158;while true do if (v157==(0 -0)) then v158=v12:FindFirstChild(v7("\29\187\132\226\201","\186\85\212\235\146")) or v12:FindFirstChild(v7("\240\136\24\249\42","\56\162\225\118\158\89\142")) ;if v158 then local v214=0 + 0 ;local v215;while true do if (v214==0) then v215=v10:WaitForChild(v7("\78\32\214\170\44\204\79","\184\60\101\160\207\66")):WaitForChild(v7("\57\141\115\172\20\148\121\178\37","\220\81\226\28"));for v234,v235 in ipairs(v158:GetChildren()) do if  not v25 then break;end if (v235 and v235.Parent) then local v246=0 -0 ;local v247;while true do if (v246==(0 -0)) then v247={v7("\6\198\135\211\229\200\3","\167\115\181\226\155\138"),v235};v215:FireServer(unpack(v247));break;end end end end break;end end end break;end end end);elseif v30 then local v167=0 -0 ;while true do if (v167==(778 -(454 + 324))) then v30:Disconnect();v30=nil;break;end end end end);end break;end if (v65==(0 + 0)) then v25=v64;if v30 then local v122=688 -(364 + 324) ;while true do if (v122==(0 -0)) then v30:Disconnect();v30=nil;break;end end end v65=2 -1 ;end end end});local v39={};local v40=v12:WaitForChild(v7("\239\35\247\127\105\104\213\246\35\235\79\93\126\202\230\39\245","\166\130\66\135\60\27\17"),4 + 6 ) or v12:WaitForChild(v7("\71\88\215\102\36\69\70\221\83\63\72\78\203\103","\80\36\42\174\21"),12 -7 ) or v12:WaitForChild(v7("\109\2\46\105\90\17\59\105","\26\46\112\87"),20 -15 ) ;if v40 then for v86,v87 in ipairs(v40:GetChildren()) do table.insert(v39,v87.Name);end end if ( #v39==(0 -0)) then table.insert(v39,v7("\151\38\165\124\170\178\5\183\171\42\184\96\190\179\5\177\183\32\164\122\171\173\68\176\182","\212\217\67\203\20\223\223\37"));else v28=v39[2 -1 ];end v34:Dropdown({[v7("\142\132\188\222\191","\178\218\237\200")]=v7("\133\176\234\213\181\161\166\243\164\172\245\196\183\185","\176\214\213\134"),[v7("\194\172\186\193\173\69","\57\148\205\214\180\200\54")]=v39,[v7("\36\252\57\33\115","\22\114\157\85\84")]=v28,[v7("\231\202\31\200\95\247\171\207","\200\164\171\115\164\61\150")]=function(v66) v28=v66;end});v34:Toggle({[v7("\138\253\23\73\134","\227\222\148\99\37")]=v7("\18\71\70\249\185\28\66\87\248\185\0\87\94\243\250\39\87\86\182\218\33\75\65\226\248\63","\153\83\50\50\150"),[v7("\107\119\127\9\118","\45\61\22\19\124\19\203")]=false,[v7("\226\19\1\249\0\113\186\202","\217\161\114\109\149\98\16")]=function(v67) local v68=1268 -(1249 + 19) ;while true do if (v68==(0 + 0)) then autoOpenSelectedCrystalEnabled=v67;if autoOpenSelectedCrystalEnabled then task.spawn(function() local v133=1183 -(1058 + 125) ;local v134;while true do if ((0 -0)==v133) then v134=v10:WaitForChild(v7("\0\5\46\121\178\96\1","\20\114\64\88\28\220")):WaitForChild(v7("\62\17\215\186\219\194\164\34\21\211\184\202\213\176\62\21\215","\221\81\97\178\212\152\176"));while autoOpenSelectedCrystalEnabled do pcall(function() if ((v28~="") and (v28~=v7("\227\226\19\243\15\192\167\30\233\19\222\243\28\247\90\200\233\30\244\20\217\245\28\255\21","\122\173\135\125\155"))) then local v198=1086 -(686 + 400) ;local v199;while true do if ((0 -0)==v198) then v199={v7("\139\209\5\183\28\35\209\151\213\1\181","\168\228\161\96\217\95\81"),v28};v134:InvokeServer(unpack(v199));break;end end end end);task.wait(229.1 -(73 + 156) );end break;end end end);end break;end end end});v34:Toggle({[v7("\239\216\58\80\42","\55\187\177\78\60\79")]=v7("\12\219\75\228\6\234\150\34\194\73\238\6\255\133\57\221","\224\77\174\63\139\38\175"),[v7("\178\64\84\59\129","\78\228\33\56")]=false,[v7("\237\127\190\15\135\207\125\185","\229\174\30\210\99")]=function(v69) autoEvolvePetsEnabled=v69;if autoEvolvePetsEnabled then task.spawn(function() local v92=v10:WaitForChild(v7("\9\200\144\84\227\41\42","\89\123\141\230\49\141\93")):WaitForChild(v7("\242\100\226\3\53\92\252\125\224\9\34\79\254\126\226\9","\42\147\17\150\108\112"));local v93={v7("\14\179\57\112\194\254\0\170\59\122\215\237\27\181","\136\111\198\77\31\135")};while autoEvolvePetsEnabled do local v105=0;while true do if ((811 -(721 + 90))==v105) then pcall(function() v92:InvokeServer(unpack(v93));end);task.wait(0.5 + 0 );break;end end end end);end end});task.spawn(function() local v70=v12:WaitForChild(v7("\0\6\180\69\155\235\27\173\7\27","\201\98\105\199\54\221\132\119"),10) or v12:WaitForChild(v7("\155\3\144\50\7\38","\204\217\108\227\65\98\85"),16 -11 ) or v12:WaitForChild(v7("\92\204\230\246\41\211\120\204\249\225\41\210","\160\62\163\149\133\76"),12 -7 ) ;if v70 then for v94,v95 in ipairs(v70:GetChildren()) do local v96=v95.Name;local v97=v7("\254\169\25\111","\163\182\192\109\79")   .. v96 ;local v98=false;local v99=nil;local v100=nil;v35:Toggle({[v7("\0\47\20\204\240","\149\84\70\96\160")]=v97,[v7("\14\7\1\248\61","\141\88\102\109")]=false,[v7("\144\82\198\124\24\60\86\202","\161\211\51\170\16\122\93\53")]=function(v106) v98=v106;local v107=v14.Character;local v108=v107 and v107:FindFirstChild(v7("\211\187\191\41\245\161\187\44\201\161\189\60\203\175\160\60","\72\155\206\210")) ;if v98 then local v135=0;while true do if (v135==(470 -(224 + 246))) then if v108 then v99=v108.CFrame;end v100=v11.RenderStepped:Connect(function() if v98 then pcall(function() local v200=0 -0 ;local v201;local v202;local v203;while true do if (v200==(3 -1)) then if (v202 and v203) then local v236=0 + 0 ;while true do if (v236==(0 + 0)) then v202.CFrame=v203.CFrame * CFrame.new(0 + 0 ,3 + 0 ,3 -1 ) ;v202.Velocity=Vector3.new(0 -0 ,0 -0 ,0);break;end end end v13:Button1Down(Vector2.new(513 -(203 + 310) ,1993 -(1238 + 755) ));v200=1 + 2 ;end if (v200==(0 + 0)) then local v227=0;while true do if (v227==(0 -0)) then v201=v14.Character;if v201 then v15(v201);end v227=1535 -(709 + 825) ;end if (v227==(1 -0)) then v200=1 -0 ;break;end end end if (v200==(865 -(196 + 668))) then v202=v201 and v201:FindFirstChild(v7("\110\111\89\15\61\73\115\80\60\60\73\110\100\15\33\82","\83\38\26\52\110")) ;v203=v95:FindFirstChild(v7("\112\18\38\66","\38\56\119\71")) or v95:FindFirstChild(v7("\219\250\85\215\43\89\250\235\106\217\42\66\195\238\74\194","\54\147\143\56\182\69")) or v95:FindFirstChildWhichIsA(v7("\244\128\236\76\239\215\147\235","\191\182\225\159\41")) ;v200=7 -5 ;end if ((5 -2)==v200) then v13:Button1Up(Vector2.new(833 -(171 + 662) ,93 -(4 + 89) ));break;end end end);elseif v100 then local v216=0 -0 ;local v217;while true do if (v216==0) then v217=0 -0 ;while true do if (v217==(0 + 0)) then v100:Disconnect();v100=nil;break;end end break;end end end end);break;end end else if v100 then local v144=0 -0 ;while true do if (v144==(0 -0)) then v100:Disconnect();v100=nil;break;end end end if (v99 and v108) then v108.CFrame=v99;end v99=nil;end end});end else v35:Toggle({[v7("\31\27\60\89\142","\162\75\114\72\53\235\231")]="Erro: bossFolder não encontrada",[v7("\186\61\72\247\86","\98\236\92\36\130\51")]=false,[v7("\135\24\0\182\71\169\182\59","\80\196\121\108\218\37\200\213")]=function() end});end end);v36:Toggle({[v7("\52\122\22\115\78","\234\96\19\98\31\43\110")]=v7("\32\30\64\202\236\94\132\9\11","\235\102\127\50\167\204\18"),[v7("\102\160\249\54\65","\78\48\193\149\67\36")]=false,[v7("\19\31\140\20\67\49\29\139","\33\80\126\224\120")]=function(v71) local v72=0 + 0 ;while true do if (v72==(0 + 0)) then farmLootEnabled=v71;if lootConnection then lootConnection=nil;end v72=1016 -(657 + 358) ;end if (v72==(1487 -(35 + 1451))) then if farmLootEnabled then task.spawn(function() while farmLootEnabled do pcall(function() local v146=0 -0 ;local v147;while true do if (v146==(1453 -(28 + 1425))) then v147=v14.Character;if v147 then local v204=v12:FindFirstChild(v7("\255\184\2\211\82\233\172\32\203\85\226\187","\60\140\200\99\164"));if v204 then local v221=1993 -(941 + 1052) ;local v222;while true do if (v221==(1187 -(1151 + 36))) then v222=v204:FindFirstChild(v7("\177\245\8\42\167\158","\194\231\148\100\70"));if v222 then for v250,v251 in ipairs(v222:GetDescendants()) do if  not farmLootEnabled then break;end local v252=nil;if v251:IsA(v7("\100\77\210\166\198\201\84\88","\168\38\44\161\195\150")) then v252=v251;elseif v251:IsA(v7("\173\243\134\115\60","\118\224\156\226\22\80\136\214")) then v252=v251.PrimaryPart or v251:FindFirstChild(v7("\106\239\87\132\78\235","\224\34\142\57")) or v251:FindFirstChildWhichIsA(v7("\252\166\214\216\67\240\79\26","\110\190\199\165\189\19\145\61")) ;end if v252 then local v259=0;local v260;while true do if (v259==(1 + 0)) then task.wait(0.05 + 0 );break;end if (v259==(1514 -(822 + 692))) then v260=v147:FindFirstChild(v7("\242\254\122\233\133\200\211\239\69\231\132\211\234\234\101\252","\167\186\139\23\136\235"));if v260 then local v262=0;local v263;while true do if ((1832 -(1552 + 280))==v262) then v263=0 -0 ;while true do if (0==v263) then v260.CFrame=v252.CFrame + Vector3.new(0 + 0 ,299 -(45 + 252) ,0) ;if firetouchinterest then firetouchinterest(v260,v252,0 + 0 );firetouchinterest(v260,v252,1);end break;end end break;end end end v259=1;end end end end end break;end end end end break;end end end);task.wait(0.5);end end);end break;end end end});v36:Button({[v7("\46\188\156\1\31","\109\122\213\232")]=v7("\195\246\177\36\235\229\187\112\207\251\174\112\203\251\167\61\235\249\182\35","\80\142\151\194"),[v7("\32\199\123\64\1\199\116\71","\44\99\166\23")]=function() task.spawn(function() local v84=0 + 0 ;while true do if (v84==(0 -0)) then pcall(function() local v123=433 -(114 + 319) ;local v124;while true do if (v123==(0 -0)) then v124=v10:WaitForChild(v7("\110\210\63\51\61\176\111","\196\28\151\73\86\83")):WaitForChild(v7("\246\15\44\29\135\86\12\91\242\16\61\21\144\65\61\96\246\13\61","\22\147\99\73\112\226\56\120"));if v124 then v124:FireServer(v7("\139\125\227\241\130\175\53\193\253\140\170\114\231","\237\216\21\130\149"));v124:FireServer(v7("\167\66\90\92\164\219\95\142\14\124\87\177\198\77","\62\226\46\63\63\208\169"));v124:FireServer(v7("\199\21\84\153\22\3\40\30\192\23\65\138\11\20","\62\133\121\53\227\127\109\79"));v124:FireServer(v7("\35\28\51\241\217\185\164\25\6\55","\194\112\116\82\149\182\206"));v124:FireServer(v7("\21\161\75\16\212\236\7\55\175","\110\89\200\44\120\160\130"));v124:FireServer(v7("\134\194\88\82\70\88\61\88\167\131\124\84\66\94\51","\45\203\163\43\38\35\42\91"));v124:FireServer(v7("\251\139\218\38\149\167\91","\52\178\229\188\67\231\201"));v124:FireServer(v7("\4\85\85\22\249\85\55\56\1\99\16\248\78\46","\67\65\33\48\100\151\60"));v124:FireServer(v7("\249\245\161\203\231","\147\191\135\206\184"));end break;end end end);v8:Notify({[v7("\176\33\178\205\221","\210\228\72\198\161\184\51")]=v7("\19\69\246\29\118\192\34\9\222\17\96\218\51\91\234","\174\86\41\147\112\19"),[v7("\120\15\131\31\32\1\5","\203\59\96\237\107\69\111\113")]=v7("\7\25\161\224\63\244\216\55\86\168\228\113\253\214\55\2\169\243\40\176\210\42\0\165\224\53\255\196\100\6\173\243\48\176\195\43\18\163\242\113\255\196\100\19\160\228\60\245\217\48\25\191\160","\183\68\118\204\129\81\144"),[v7("\42\184\98\229\31\139\1\163","\226\110\205\16\132\107")]=1246 -(157 + 1086) ,[v7("\194\192\239\215","\33\139\163\128\185")]=v7("\84\80\1\221\92","\190\55\56\100")});break;end end end);end});v36:Button({[v7("\98\166\40\18\22","\147\54\207\92\126\115\131")]=v7("\46\61\52\116\0\62\44\61\57\61\46\118\8\34\33\110","\30\109\81\85\29\109"),[v7("\220\112\88\186\52\223\255\244","\156\159\17\52\214\86\190")]=function() task.spawn(function() local v85=0 -0 ;while true do if (v85==(0 -0)) then pcall(function() local v125=0 -0 ;local v126;local v127;local v128;while true do if (v125==(1 -0)) then v128={v7("\104\90\120\12\74\91\52\43\71\80\103\28","\104\47\53\20"),v7("\144\69\141\10\185\29\227\111\137\25\175\27","\111\195\44\225\124\220"),v7("\239\73\15\119\174\165\152\101\8\118\184\191","\203\184\38\96\19\203"),v7("\20\114\126\76\207\121\80\113\68\221\45","\174\89\19\25\33"),v7("\3\23\85\75\249\131\24\111\49\90\75\228\147","\107\79\114\50\46\151\231"),v7("\28\178\176\59\132\56\187\128\26\174\176\58\158","\160\89\198\213\73\234\89\215"),v7("\123\112\188\255\215\73\49\151\246\192\91\101","\165\40\17\212\158"),v7("\209\209\29\61\34\224\203\72\16\46\224\202\28","\70\133\185\104\83"),v7("\37\75\71\35\204\10\81\4\9\193\1\86\80","\169\100\37\36\74"),v7("\45\142\166\94\9\128\170\68\64\180\170\81\4\136\181\16\35\143\167\67\20","\48\96\231\194"),v7("\229\67\26\37\16\219\174\143\136\121\6\40\10\204","\227\168\58\110\77\121\184\207"),v7("\76\51\177\68\180\201\49\134\115\57\172\84","\197\27\92\223\32\209\187\17")};if v127 then for v184,v185 in ipairs(v127:GetChildren()) do if  not table.find(v128,v185.Name) then table.insert(v128,v185.Name);end end end v125=861 -(464 + 395) ;end if (v125==(0 + 0)) then v126=v10:WaitForChild(v7("\188\202\171\185\160\251\174","\220\206\143\221")):WaitForChild(v7("\133\117\40\20\211\239\218\131\110\57\37\221\193\221\146\120","\178\230\29\77\119\184\172"));v127=v12:FindFirstChild(v7("\246\182\15\8\99\202\240\169\11\9\115\235","\152\149\222\106\123\23")) or v12:FindFirstChild(v7("\254\46\243\80\161\206","\213\189\70\150\35")) ;v125=1 + 0 ;end if (v125==2) then for v159,v160 in ipairs(v128) do local v161=0 + 0 ;while true do if (v161==(1230 -(957 + 273))) then pcall(function() v126:InvokeServer(v160);end);task.wait(0.1 + 0 );break;end end end break;end end end);v8:Notify({[v7("\55\86\215\247\6","\155\99\63\163")]=v7("\161\217\164\158\173\196\176\212\182\140\171\128\145","\228\226\177\193\237\217"),[v7("\23\191\45\242\49\190\55","\134\84\208\67")]="Tentativa de resgate enviada para todos os baús!",[v7("\55\185\148\93\7\165\137\82","\60\115\204\230")]=3,[v7("\206\57\228\126","\16\135\90\139")]=v7("\87\124\3\48\69","\24\52\20\102\83\46\52")});break;end end end);end});v36:Toggle({[v7("\240\38\53\40\10","\111\164\79\65\68")]=v7("\228\204\154\158\15\230\202\153\176\213\39\230\202\202","\138\166\185\227\190\78"),[v7("\253\117\201\34\87","\121\171\20\165\87\50\67")]=false,[v7("\229\57\181\58\187\3\197\51","\98\166\88\217\86\217")]=function(v73) local v74=0;while true do if (v74==(0 + 0)) then v21=v73;if v21 then task.spawn(function() local v136=v14:WaitForChild(v7("\248\255\119\11\135\249\224\243\119\21","\188\150\150\25\97\230"));while v21 do pcall(function() local v148=v12:FindFirstChild(v7("\211\154\83\3\2\233\239\135\83\13\15\230\234\136\77\22\31","\141\186\233\63\98\108"));if v148 then for v186,v187 in ipairs(v148:GetChildren()) do if  not v21 then break;end v136:FireServer(v7("\243\255\53\151\41\253\217\39\191\41\253\249","\69\145\138\76\214"),v187.Name);task.wait(0.05 -0 );end else v136:FireServer(v7("\114\218\144\168\179\26\67\196\128\133\179\5","\118\16\175\233\233\223"),v7("\172\150\58\174\224\143","\29\235\228\85\219\142\235"));end end);task.wait(0.2 -0 );end end);end break;end end end});v36:Toggle({[v7("\9\221\174\209\114","\50\93\180\218\189\23\46\71")]=v7("\252\177\66\12\101\208\68\158\151\83\89\86\213\67\219\170\72","\40\190\196\59\44\36\188"),[v7("\10\68\208\161\255","\109\92\37\188\212\154\29")]=false,[v7("\39\238\168\207\51\91\7\228","\58\100\143\196\163\81")]=function(v75) local v76=0 + 0 ;while true do if (v76==(0 -0)) then v22=v75;if v22 then task.spawn(function() local v137=0 -0 ;local v138;while true do if (v137==(1780 -(389 + 1391))) then v138=v14:WaitForChild(v7("\20\75\45\169\62\108\243\11\20\86","\110\122\34\67\195\95\41\133"));while v22 do pcall(function() local v188=0 + 0 ;local v189;while true do if ((0 + 0)==v188) then v189=v14:WaitForChild(v7("\123\184\85\64\215\80\167\94\68\194","\182\21\209\59\42"));pcall(function() local v223=0 -0 ;local v224;while true do if (v223==(0 -0)) then v224=v12:FindFirstChild(v7("\190\68\201\28\47\186\130\89\201\18\34\181\135\86\215\9\50","\222\215\55\165\125\65"));if v224 then for v253,v254 in ipairs(v224:GetChildren()) do if  not v22 then break;end v189:FireServer(v7("\46\196\223\59\254\205\222\66\57\195\207\17\247\207\254","\42\76\177\166\122\146\161\141"),v254.Name);task.wait(0.05);end else v189:FireServer(v7("\167\159\28\239\117\122\150\130\16\220\112\125\160\132\22","\22\197\234\101\174\25"),v7("\10\38\170\201\120\171","\230\77\84\197\188\22\207\183"));end break;end end end);break;end end end);task.wait(951.2 -(783 + 168) );end break;end end end);end break;end end end});local v41=nil;v36:Toggle({[v7("\205\29\210\240\137","\85\153\116\166\156\236\193\144")]=v7("\145\238\65\188\231\11\228\193\65\191\164\41\183\236\76\189\224\19","\96\196\128\45\211\132"),[v7("\3\140\119\74\215","\184\85\237\27\63\178\207\212")]=false,[v7("\43\88\5\83\10\88\10\84","\63\104\57\105")]=function(v77) v26=v77;local v78=v14.Character;local v79=v78 and v78:FindFirstChild(v7("\35\146\169\69\5\136\173\64\57\136\171\80\59\134\182\80","\36\107\231\196")) ;if v26 then if v79 then v41=v79.CFrame;end task.spawn(function() while v26 do local v110=0 + 0 ;while true do if (v110==(0 -0)) then pcall(function() local v149=0 + 0 ;local v150;local v151;while true do if (v149==(311 -(309 + 2))) then local v190=0;local v191;while true do if (v190==(0 -0)) then v191=1212 -(1090 + 122) ;while true do if (v191==(0 + 0)) then v150=v14.Character;v151=v150 and v150:FindFirstChild(v7("\117\160\175\134\83\186\171\131\111\186\173\147\109\180\176\147","\231\61\213\194")) ;v191=3 -2 ;end if (v191==(1 + 0)) then v149=1119 -(628 + 490) ;break;end end break;end end end if (v149==(1 + 0)) then if v151 then local v205=0 -0 ;local v206;while true do if (v205==(0 -0)) then v206=v12:FindFirstChild(v7("\0\190\49\114\7\169\8\125\5\162\62\120\57\172\47\103\26","\19\105\205\93"));if v206 then for v239,v240 in ipairs(v206:GetDescendants()) do if  not v26 then break;end local v241=nil;if v240:IsA(v7("\139\9\205\132\15\168\26\202","\95\201\104\190\225")) then v241=v240;elseif v240:IsA(v7("\130\196\197\203\163","\174\207\171\161")) then v241=v240.PrimaryPart or v240:FindFirstChildWhichIsA(v7("\207\255\30\246\200\214\255\234","\183\141\158\109\147\152")) ;end if v241 then v151.CFrame=v241.CFrame + Vector3.new(774 -(431 + 343) ,5 -2 ,0 -0 ) ;task.wait(0.5 + 0 );end end end break;end end end break;end end end);task.wait(1 + 1 );break;end end end end);else if (v41 and v79) then v79.CFrame=v41;end v41=nil;end end});v36:Toggle({[v7("\24\0\242\0\41","\108\76\105\134")]=v7("\198\208\189\245\199\171\239\164\236\222\171\231\190\238\221\255","\174\139\165\209\129"),[v7("\149\178\238\212\195","\24\195\211\130\161\166\99\16")]=false,[v7("\101\2\229\32\81\23\69\8","\118\38\99\137\76\51")]=function(v80) local v81=0 + 0 ;while true do if (v81==(1695 -(556 + 1139))) then v27=v80;if v27 then task.spawn(function() while v27 do pcall(function() local v152=15 -(6 + 9) ;local v153;while true do if (v152==(0 + 0)) then v153=v14.Character;if v153 then local v207=0 + 0 ;local v208;while true do if (v207==0) then v208=v153:FindFirstChild(v7("\240\51\9\6\0\10\232\43\21\49\6\53\243\50","\64\157\70\101\114\105")) or v14:FindFirstChild(v7("\77\189\171\247\25\106\189\170\243\51\79\189\169\247","\112\32\200\199\131")) ;if (v208 and v208:IsA(v7("\26\81\80\173\198\137\35\63\85","\66\76\48\60\216\163\203"))) then v208.Value=219 -(28 + 141) ;end break;end end end break;end end end);task.wait(1 + 0 );end end);end break;end end end});v8:Notify({[v7("\142\143\109\255\90","\68\218\230\25\147\63\174")]=v7("\131\35\93\70\183\237\6\86\75\179\163\46\64\12\158\184\40","\214\205\74\51\44"),[v7("\217\67\236\232\114\244\88","\23\154\44\130\156")]=v7("\60\169\184\160\34\18\24\168\237\133\63\29\22\230\139\175\36\30\81\163\237\131\55\0\5\163\191\183\118\50\29\170\237\139\58\22\28\163\163\186\37\83\24\168\185\171\49\1\16\162\162\189\118\16\30\171\237\189\35\16\20\181\190\161\119","\115\113\198\205\206\86"),[v7("\160\66\236\91\144\94\241\84","\58\228\55\158")]=6 -1 ,[v7("\157\138\223\32","\85\212\233\176\78\92\205")]=v7("\73\80\141\225\65","\130\42\56\232")});
+--[[\n  Protected by Chefin Obfuscator\n  Ninja Legends Hub - Fully Obfuscated\n]]--
+local _ENV = (getgenv or getrenv or getfenv)()
+local _s,_u,_v,_w,_x = string.char,table.concat,math.random,os.time,game
+local _r = function(...) return _u({...},"") end
+local _d = function(str)
+local res = ""
+for i = 1, #str do
+res = res .. string.char(string.byte(str, i) - 1)
+end
+return res
+end
+​local _g1 = _w and _w:GetService("Players")
+local _g2 = _w and _w:GetService("ReplicatedStorage")
+local _g3 = _w and _w:GetService("RunService")
+local _g4 = _w and _w:GetService("Workspace")
+local _g5 = _w and _w:GetService("VirtualUser")
+​local _lp = _g1 and _g1.LocalPlayer
+local _ui = loadstring(_w:HttpGet("https://raw.githubusercontent.com/Footagesus/WindUI/main/dist/main.lua"))()
+​local _eq = function(_c)
+if not _c then return end
+local _h = _c:FindFirstChildOfClass("Humanoid")
+local _t = _c:FindFirstChildOfClass("Tool")
+pcall(function()
+local _os = _lp:FindFirstChild("ownedSwords")
+if not _os then return end
+if _t and _os:FindFirstChild(_t.Name) then return end
+local _bp = _lp:FindFirstChildOfClass("Backpack")
+if not _bp then return end
+for _, _sf in ipairs(_os:GetChildren()) do
+local _sn = _sf.Name
+local _tb = _bp:FindFirstChild(_sn)
+if _tb and _h then
+_h:EquipTool(_tb)
+return
+end
+end
+end)
+end
+​local _win = _ui:CreateWindow({
+Title = "Ninja Legends | by Chefin",
+Icon = "sword",
+Author = "Chefin",
+Folder = "ChefinNinjaLegends",
+Size = UDim2.fromOffset(580, 460),
+Theme = "Red",
+Transparent = true,
+Acrylic = true,
+})
+​local _fn = false local _bs = false local _br = false local _bb = false local _bsk = false local _bsh = false local _as = false local _mk = false local _fh = false local _ui_t = false local _mj = false local _aosc = false local _aep = false local _am = false
+local _scn = "" local _sem = "Shadow Charge"
+local _nc = nil local _hc = nil local _sc = nil local _mc = nil
+​local _tm = _win:Tab({ Title = "Main", Icon = "layout-dashboard" })
+local _tc = _win:Tab({ Title = "Crystals", Icon = "gem" })
+local _tk = _win:Tab({ Title = "Kill", Icon = "sword" })
+local _tcl = _win:Tab({ Title = "Client", Icon = "user" })
+local _top = _win:Tab({ Title = "OP", Icon = "flame" })
+​_tm:Toggle({
+Title = "Farm Ninjitsu",
+Value = false,
+Callback = function(_val)
+_fn = _val
+if _nc then _nc:Disconnect() _nc = nil end
+if _fn then
+local _ne = _lp:WaitForChild("ninjaEvent")
+local _args = { "swingKatana" }
+_nc = _g3.RenderStepped:Connect(function()
+if _fn then
+pcall(function()
+local _char = _lp.Character
+if _char then _eq(_char) end
+_ne:FireServer(unpack(_args))
+end)
+else
+if _nc then _nc:Disconnect() _nc = nil end
+end
+end)
+end
+end,
+})
+​_tm:Toggle({
+Title = "Buy All Swords",
+Value = false,
+Callback = function(_val)
+_bs = _val
+if _bs then
+task.spawn(function()
+local _ne = _lp:WaitForChild("ninjaEvent")
+while _bs do
+pcall(function()
+local _uf = _g4:FindFirstChild("islandUnlockParts")
+if _uf then
+for _, _isl in ipairs(_uf:GetChildren()) do
+if not _bs then break end
+_ne:FireServer("buyAllSwords", _isl.Name)
+task.wait(0.05)
+end
+else
+_ne:FireServer("buyAllSwords", "Ground")
+end
+end)
+task.wait(0.2)
+end
+end)
+end
+end,
+})
+​_tm:Toggle({
+Title = "Buy All Ranks",
+Value = false,
+Callback = function(_val)
+_br = _val
+if _br then
+task.spawn(function()
+local _ne = _lp:WaitForChild("ninjaEvent")
+while _br do
+pcall(function()
+local _rf = _g2:FindFirstChild("Ranks")
+local _gf = _rf and (_rf:FindFirstChild("Ground") or _rf)
+if _gf then
+for _, _rk in ipairs(_gf:GetChildren()) do
+if not _br then break end
+_ne:FireServer("buyRank", _rk.Name)
+task.wait(0.02)
+end
+else
+if _rf then
+for _, _rk in ipairs(_rf:GetDescendants()) do
+if not _br then break end
+if _rk:IsA("Configuration") or _rk:IsA("ValueBase") or _rk:IsA("Folder") then
+_ne:FireServer("buyRank", _rk.Name)
+end
+end
+end
+end
+end)
+task.wait(0.15)
+end
+end)
+end
+end,
+})
+​_tm:Toggle({
+Title = "Buy All Belts",
+Value = false,
+Callback = function(_val)
+_bb = _val
+if _bb then
+task.spawn(function()
+local _ne = _lp:WaitForChild("ninjaEvent")
+while _bb do
+pcall(function()
+local _uf = _g4:FindFirstChild("islandUnlockParts")
+if _uf then
+for _, _isl in ipairs(_uf:GetChildren()) do
+if not _bb then break end
+_ne:FireServer("buyAllBelts", _isl.Name)
+task.wait(0.05)
+end
+else
+_ne:FireServer("buyAllBelts", "Ground")
+end
+end)
+task.wait(0.2)
+end
+end)
+end
+end,
+})
+​local _osp = nil
+_tm:Toggle({
+Title = "Auto Sell",
+Value = false,
+Callback = function(_val)
+_as = _val
+local _char = _lp.Character
+local _rp = _char and _char:FindFirstChild("HumanoidRootPart")
+if _as then
+if _rp then _osp = _rp.CFrame end
+local _tt = 0
+_sc = _g3.RenderStepped:Connect(function(_dt)
+if _as then
+pcall(function()
+local _ch = _lp.Character
+local _rpp = _ch and _ch:FindFirstChild("HumanoidRootPart")
+if _rpp then
+_tt = _tt + _dt
+if _tt < 0.6 then
+_rpp.CFrame = CFrame.new(77, 3, -53)
+elseif _tt < 1.2 then
+_rpp.CFrame = CFrame.new(97, 3, -60)
+else
+_tt = 0
+end
+end
+end)
+else
+if _sc then _sc:Disconnect() _sc = nil end
+end
+end)
+else
+if _sc then _sc:Disconnect() _sc = nil end
+if _osp and _rp then _rp.CFrame = _osp end
+_osp = nil
+end
+end,
+})
+​local _omp = nil
+_tm:Toggle({
+Title = "Mountain King Farm",
+Value = false,
+Callback = function(_val)
+_mk = _val
+local _char = _lp.Character
+local _rp = _char and _char:FindFirstChild("HumanoidRootPart")
+if _mk then
+if _rp then _omp = _rp.CFrame end
+local _mt = 0
+_mc = _g3.RenderStepped:Connect(function(_dt)
+if _mk then
+pcall(function()
+local _ch = _lp.Character
+local _rpp = _ch and _ch:FindFirstChild("HumanoidRootPart")
+if _rpp then
+_mt = _mt + _dt
+if _mt < 0.6 then
+_rpp.CFrame = CFrame.new(229, 164, -286)
+elseif _mt < 1.2 then
+_rpp.CFrame = CFrame.new(260, 112, -291)
+else
+_mt = 0
+end
+end
+end)
+else
+if _mc then _mc:Disconnect() _mc = nil end
+end
+end)
+else
+if _mc then _mc:Disconnect() _mc = nil end
+if _omp and _rp then _rp.CFrame = _omp end
+_omp = nil
+end
+end,
+})
+​_tm:Toggle({
+Title = "Farm Hoops",
+Value = false,
+Callback = function(_val)
+_fh = _val
+if _hc then _hc:Disconnect() _hc = nil end
+if _fh then
+_hc = _g3.RenderStepped:Connect(function()
+if _fh then
+pcall(function()
+local _hf = _g4:FindFirstChild("Hoops") or _g4:FindFirstChild("Rings")
+if _hf then
+local _hr = _g2:WaitForChild("rEvents"):WaitForChild("hoopEvent")
+for _, _hp in ipairs(_hf:GetChildren()) do
+if not _fh then break end
+if _hp and _hp.Parent then
+_hr:FireServer("useHoop", _hp)
+end
+end
+end
+end)
+else
+if _hc then _hc:Disconnect() _hc = nil end
+end
+end)
+end
+end,
+})
+​local _cl = {}
+local _cf = _g4:WaitForChild("mapCrystalsFolder", 10) or _g4:WaitForChild("crystalsFolder", 5) or _g4:WaitForChild("Crystals", 5)
+if _cf then
+for _, _cr in ipairs(_cf:GetChildren()) do table.insert(_cl, _cr.Name) end
+end
+if #_cl == 0 then table.insert(_cl, "Nenhum cristal encontrado") else _scn = _cl[1] end
+​_tc:Dropdown({
+Title = "Select Crystal",
+Values = _cl,
+Value = _scn,
+Callback = function(_opt) _scn = _opt end,
+})
+​_tc:Toggle({
+Title = "Auto Open Selected Crystal",
+Value = false,
+Callback = function(_val)
+_aosc = _val
+if _aosc then
+task.spawn(function()
+local _cr = _g2:WaitForChild("rEvents"):WaitForChild("openCrystalRemote")
+while _aosc do
+pcall(function()
+if _scn ~= "" and _scn ~= "Nenhum cristal encontrado" then
+_cr:InvokeServer("openCrystal", _scn)
+end
+end)
+task.wait(0.1)
+end
+end)
+end
+end,
+})
+​_tc:Toggle({
+Title = "Auto Evolve Pets",
+Value = false,
+Callback = function(_val)
+_aep = _val
+if _aep then
+task.spawn(function()
+while _aep do
+pcall(function()
+local _er = _g2:WaitForChild("rEvents"):WaitForChild("autoEvolveRemote")
+_er:InvokeServer("autoEvolvePets")
+end)
+task.wait(0.5)
+end
+end)
+end
+end,
+})
+​task.spawn(function()
+local _bf = _g4:WaitForChild("bossFolder", 10) or _g4:WaitForChild("Bosses", 5) or _g4:WaitForChild("bossesFolder", 5)
+if _bf then
+for _, _b in ipairs(_bf:GetChildren()) do
+local _bn = _b.Name
+local _bt = "Hit " .. _bn
+local _iba = false local _orp = nil local _bc = nil
+_tk:Toggle({
+Title = _bt,
+Value = false,
+Callback = function(_val)
+_iba = _val
+local _char = _lp.Character
+local _rp = _char and _char:FindFirstChild("HumanoidRootPart")
+if _iba then
+if _rp then _orp = _rp.CFrame end
+_bc = _g3.RenderStepped:Connect(function()
+if _iba then
+pcall(function()
+local _ch = _lp.Character
+if _ch then _eq(_ch) end
+local _rpp = _ch and _ch:FindFirstChild("HumanoidRootPart")
+local _hd = _b:FindFirstChild("Head") or _b:FindFirstChild("HumanoidRootPart") or _b:FindFirstChildWhichIsA("BasePart")
+if _rpp and _hd then
+_rpp.CFrame = _hd.CFrame * CFrame.new(0, 3, 2)
+_rpp.Velocity = Vector3.new(0, 0, 0)
+end
+_g5:Button1Down(Vector2.new(0,0))
+_g5:Button1Up(Vector2.new(0,0))
+end)
+else
+if _bc then _bc:Disconnect() _bc = nil end
+end
+end)
+else
+if _bc then _bc:Disconnect() _bc = nil end
+if _orp and _rp then _rp.CFrame = _orp end
+_orp = nil
+end
+end,
+})
+end
+else
+_tk:Toggle({ Title = "Erro: bossFolder não encontrada", Value = false, Callback = function() end })
+end
+end)
+​_tcl:Toggle({
+Title = "Farm Loot",
+Value = false,
+Callback = function(_val)
+_fl = _val
+if _fl then
+task.spawn(function()
+while _fl do
+pcall(function()
+local _char = _lp.Character
+if _char then
+local _scs = _g4:FindFirstChild("spawnedCoins")
+if _scs then
+local _vf = _scs:FindFirstChild("Valley")
+if _vf then
+for _, _itm in ipairs(_vf:GetDescendants()) do
+if not _fl then break end
+local _tp = nil
+if _itm:IsA("BasePart") then _tp = _itm
+elseif _itm:IsA("Model") then _tp = _itm.PrimaryPart or _itm:FindFirstChild("Handle") or _itm:FindFirstChildWhichIsA("BasePart") end
+if _tp then
+local _rp = _char:FindFirstChild("HumanoidRootPart")
+if _rp then
+_rp.CFrame = _tp.CFrame + Vector3.new(0, 2, 0)
+if firetouchinterest then
+firetouchinterest(_rp, _tp, 0)
+firetouchinterest(_rp, _tp, 1)
+end
+end
+task.wait(0.05)
+end
+end
+end
+end
+end
+end)
+task.wait(0.5)
+end
+end)
+end
+end,
+})
+​_tcl:Button({
+Title = "Mastery All Elements",
+Callback = function()
+task.spawn(function()
+pcall(function()
+local _eme = _g2:WaitForChild("rEvents"):WaitForChild("elementMasteryEvent")
+if _eme then
+_eme:FireServer("Shadow Charge") _eme:FireServer("Electral Chaos") _eme:FireServer("Blazing Entity")
+_eme:FireServer("Shadowfire") _eme:FireServer("Lightning") _eme:FireServer("Masterful Wrath")
+_eme:FireServer("Inferno") _eme:FireServer("Eternity Storm") _eme:FireServer("Frost")
+end
+end)
+_ui:Notify({ Title = "Element Mastery", Content = "Comandos de mastery enviados!", Duration = 3, Icon = "check" })
+end)
+end,
+})
+​_tcl:Button({
+Title = "Claim All Chests",
+Callback = function()
+task.spawn(function()
+pcall(function()
+local _ccr = _g2:WaitForChild("rEvents"):WaitForChild("checkChestRemote")
+local _crf = _g4:FindFirstChild("chestRewards") or _g4:FindFirstChild("Chests")
+local _cls = {"Golden Chest", "Silver Chest", "Wooden Chest", "Magma Chest", "Legends Chest", "Eternal Chest", "Sahara Chest", "Thunder Chest", "Ancient Chest", "Midnight Shadow Chest", "Mythical Chest", "Wonder Chest"}
+if _crf then
+for _, _cm in ipairs(_crf:GetChildren()) do
+if not table.find(_cls, _cm.Name) then table.insert(_cls, _cm.Name) end
+end
+end
+for _, _cn in ipairs(_cls) do
+pcall(function() _ccr:InvokeServer(_cn) end)
+task.wait(0.1)
+end
+end)
+_ui:Notify({ Title = "Chest Rewards", Content = "Resgate de baús concluído!", Duration = 3, Icon = "check" })
+end)
+end,
+})
+​_tcl:Toggle({
+Title = "Buy All Skills",
+Value = false,
+Callback = function(_val)
+_bsk = _val
+if _bsk then
+task.spawn(function()
+local _ne = _lp:WaitForChild("ninjaEvent")
+while _bsk do
+pcall(function()
+local _uf = _g4:FindFirstChild("islandUnlockParts")
+if _uf then
+for _, _isl in ipairs(_uf:GetChildren()) do
+if not _bsk then break end
+_ne:FireServer("buyAllSkills", _isl.Name)
+task.wait(0.05)
+end
+else
+_ne:FireServer("buyAllSkills", "Ground")
+end
+end)
+task.wait(0.2)
+end
+end)
+end
+end,
+})
+​_tcl:Toggle({
+Title = "Buy All Shurikens",
+Value = false,
+Callback = function(_val)
+_bsh = _val
+if _bsh then
+task.spawn(function()
+local _ne = _lp:WaitForChild("ninjaEvent")
+while _bsh do
+pcall(function()
+local _uf = _g4:FindFirstChild("islandUnlockParts")
+if _uf then
+for _, _isl in ipairs(_uf:GetChildren()) do
+if not _bsh then break end
+_ne:FireServer("buyAllShurikens", _isl.Name)
+task.wait(0.05)
+end
+else
+_ne:FireServer("buyAllShurikens", "Ground")
+end
+end)
+task.wait(0.2)
+end
+end)
+end
+end,
+})
+​local _oip = nil
+_tcl:Toggle({
+Title = "Unlock All Islands",
+Value = false,
+Callback = function(_val)
+_ui_t = _val
+local _char = _lp.Character
+local _rp = _char and _char:FindFirstChild("HumanoidRootPart")
+if _ui_t then
+if _rp then _oip = _rp.CFrame end
+task.spawn(function()
+while _ui_t do
+pcall(function()
+local _ch = _lp.Character
+local _rpp = _ch and _ch:FindFirstChild("HumanoidRootPart")
+if _rpp then
+local _uf = _g4:FindFirstChild("islandUnlockParts")
+if _uf then
+for _, _ip in ipairs(_uf:GetDescendants()) do
+if not _ui_t then break end
+local _tp = nil
+if _ip:IsA("BasePart") then _tp = _ip
+elseif _ip:IsA("Model") then _tp = _ip.PrimaryPart or _ip:FindFirstChildWhichIsA("BasePart") end
+if _tp then
+_rpp.CFrame = _tp.CFrame + Vector3.new(0, 3, 0)
+task.wait(0.5)
+end
+end
+end
+end
+end)
+task.wait(2)
+end
+end)
+else
+if _oip and _rp then _rp.CFrame = _oip end
+_oip = nil
+end
+end,
+})
+​_tcl:Toggle({
+Title = "Multi Jump Boost",
+Value = false,
+Callback = function(_val)
+_mj = _val
+if _mj then
+task.spawn(function()
+while _mj do
+pcall(function()
+local _char = _lp.Character
+if _char then
+local _mjc = _char:FindFirstChild("multiJumpCount") or _lp:FindFirstChild("multiJumpCount")
+if _mjc and _mjc:IsA("ValueBase") then _mjc.Value = 50 end
+end
+end)
+task.wait(1)
+end
+end)
+end
+end,
+})
+​_top:Paragraph({
+Title = "Instruções OP",
+Content = "Para obter tudo infinito, basta clicar no botão Infinite Gems, e clicar em Mastery All Elements (na aba Client), depois é só usar o auto money para ganhar dinheiro infinitamente automaticamente, sem ter erros de negativo. Você precisa não ter os elementos masterizados, ou crie uma nova conta."
+})
+​local _els = {"Shadow Charge", "Electral Chaos", "Blazing Entity", "Shadowfire", "Lightning", "Masterful Wrath", "Inferno", "Eternity Storm", "Frost"}
+​_top:Dropdown({
+Title = "Mastery Element Select",
+Values = _els,
+Value = _sem,
+Callback = function(_opt) _sem = _opt end,
+})
+​_top:Button({
+Title = "Mastery Selected Element",
+Callback = function()
+task.spawn(function()
+pcall(function()
+local _eme = _g2:WaitForChild("rEvents"):WaitForChild("elementMasteryEvent")
+if _eme and _sem ~= "" then _eme:FireServer(_sem) end
+end)
+_ui:Notify({ Title = "Element Mastery", Content = "Elemento " .. tostring(_sem) .. " masterizado!", Duration = 3, Icon = "check" })
+end)
+end,
+})
+​_top:Button({
+Title = "Infinite Gems",
+Callback = function()
+task.spawn(function()
+pcall(function()
+local _zme = _g2:WaitForChild("rEvents"):WaitForChild("zenMasterEvent")
+if _zme then _zme:FireServer("convertGems", -math.huge) end
+end)
+_ui:Notify({ Title = "Infinite Gems", Content = "Gatilho enviado!", Duration = 3, Icon = "check" })
+end)
+end,
+})
+​_top:Toggle({
+Title = "Auto Money",
+Value = false,
+Callback = function(_val)
+_am = _val
+if _am then
+task.spawn(function()
+while _am do
+pcall(function()
+local _zme = _g2:WaitForChild("rEvents"):WaitForChild("zenMasterEvent")
+if _zme then _zme:FireServer("convertGems", 1E+300) end
+end)
+task.wait(0.1)
+end
+end)
+end
+end,
+})
+​_ui:Notify({ Title = "Ninja Legends Hub", Content = "Versão protegida carregada com sucesso!", Duration = 5, Icon = "check" })
